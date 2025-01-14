@@ -76,7 +76,7 @@ public class Withdrawl extends JFrame implements ActionListener {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     withdrawlButton.doClick();  // Simulate a button click
                 } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-                    withdrawlButton.doClick();  // Simulate a button click
+                    backButton.doClick();  // Simulate a button click
                 }
             }
         });
@@ -131,8 +131,7 @@ public class Withdrawl extends JFrame implements ActionListener {
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
                 }
-            } else if (Amount.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Please enter an amount");
+
             }
 
         } catch (Exception ex) {

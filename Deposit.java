@@ -88,6 +88,7 @@ public class Deposit extends JFrame implements ActionListener {
         try {
             String Amount = deposit.getText();
             if (e.getSource().equals(backButton)) {
+                setVisible(false);
                 new Main_class(pin);
             } else if (e.getSource().equals(depositButton) && !Amount.equals("")) {
                 connect_wit_database con = new connect_wit_database();

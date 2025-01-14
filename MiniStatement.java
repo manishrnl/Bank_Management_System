@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class MiniStatement extends JFrame implements ActionListener {
     String pin;
@@ -71,6 +73,7 @@ public class MiniStatement extends JFrame implements ActionListener {
         // Fetch and display balance and transactions
         fetchBalance();
         showTransaction();
+
     }
 
     public static void main(String[] args) {
@@ -90,8 +93,9 @@ public class MiniStatement extends JFrame implements ActionListener {
                     balance -= Double.parseDouble(resultSet.getString("Ammount"));
                 }
             }
-
-            showResult.setText("Balance : ₹ " + balance); // Display the balance directly
+            NumberFormat indianFormat = NumberFormat.getNumberInstance(new Locale("hindi", "IN"));
+            String formattedNumber = indianFormat.format(balance);
+            showResult.setText("Balance : ₹ " + formattedNumber); // Display the balance directly
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Something Went Wrong");
         }
@@ -104,11 +108,15 @@ public class MiniStatement extends JFrame implements ActionListener {
             ResultSet resultSet = con.statement.executeQuery("SELECT * FROM balance WHERE Pin= '" + pin + "' ORDER BY ID DESC LIMIT 10");
             int index = 0; // To track labels
             while (resultSet.next() && index < 10) {
+
                 String type = resultSet.getString("Type");
                 String amount = resultSet.getString("Ammount");
                 String date = resultSet.getString("date");
                 String transactionType = type.equalsIgnoreCase("Credit") ? "Credited" : "Debited";
-                String formattedText = String.format("Amount of ₹ : %-15s is  %-10s ON : %-20s", amount, transactionType, date);
+                NumberFormat indianFormat = NumberFormat.getNumberInstance(new Locale("hindi", "IN"));
+                String formattedNumber = indianFormat.format(Double.parseDouble(amount));
+                String formattedText = String.format("Amount of ₹ : %-20s is  %-10s ON : %-20s", formattedNumber, transactionType, date);
+
                 transactionLabels[index].setText(formattedText);
                 index++;
             }

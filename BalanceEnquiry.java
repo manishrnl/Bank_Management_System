@@ -4,7 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class BalanceEnquiry extends JFrame implements ActionListener {
 
@@ -43,6 +47,7 @@ public class BalanceEnquiry extends JFrame implements ActionListener {
         backButton.setForeground(Color.WHITE);
         backButton.setBounds(653, 395, 165, 35);
         backButton.addActionListener(this);
+        this.add(backButton);
         bank.add(backButton);//bank.... because we want to add text above the images which is stored in bank variable
 
         //getContentPane().setBackground(new Color(222, 255, 228));
@@ -52,6 +57,18 @@ public class BalanceEnquiry extends JFrame implements ActionListener {
         setVisible(true);
 
         showBalance();
+        // Add KeyListener to allow Enter key press
+        this.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    backButton.doClick();  // Simulate a button click
+                } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    backButton.doClick();  // Simulate a button click
+                }
+            }
+        });
+        this.setFocusable(true); // Ensure frame can listen to key events
     }
 
     public static void main(String[] args) {
@@ -71,7 +88,10 @@ public class BalanceEnquiry extends JFrame implements ActionListener {
                     balance -= Double.parseDouble(resultSet.getString("Ammount"));
                 }
             }
-            balancepanel.setText("Your Balance is ₹ : " + balance);
+            NumberFormat indianFormat = NumberFormat.getNumberInstance(new Locale("hindi", "IN"));
+            String formattedNumber = indianFormat.format(balance);
+
+            balancepanel.setText("Your Balance is ₹ : " + formattedNumber);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Something Went Wrong");
         }
@@ -81,9 +101,10 @@ public class BalanceEnquiry extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(backButton)) {
-            new Main_class(pin); // Pass the correct pin value
             setVisible(false);
             dispose();
+            new Main_class(pin); // Pass the correct pin value
+
         }
     }
 }
