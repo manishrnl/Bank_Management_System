@@ -1,0 +1,300 @@
+<html>
+<head>
+<title>Signup.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #2aacb8;}
+.s4 { color: #6aab73;}
+.s5 { color: #7a7e85;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Signup.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">bank</span><span class="s2">.</span><span class="s1">management</span><span class="s2">.</span><span class="s1">system</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">toedter</span><span class="s2">.</span><span class="s1">calendar</span><span class="s2">.</span><span class="s1">JDateChooser</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">javax</span><span class="s2">.</span><span class="s1">swing</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">awt</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">awt</span><span class="s2">.</span><span class="s1">event</span><span class="s2">.</span><span class="s1">ActionEvent</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">awt</span><span class="s2">.</span><span class="s1">event</span><span class="s2">.</span><span class="s1">ActionListener</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">Random</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">Signup </span><span class="s0">extends </span><span class="s1">JFrame </span><span class="s0">implements </span><span class="s1">ActionListener </span><span class="s2">{</span>
+    <span class="s1">JRadioButton male</span><span class="s2">, </span><span class="s1">female</span><span class="s2">, </span><span class="s1">married</span><span class="s2">, </span><span class="s1">unmarried</span><span class="s2">, </span><span class="s1">others</span><span class="s2">;</span>
+    <span class="s1">JDateChooser dateChooser</span><span class="s2">;</span>
+    <span class="s1">Random ran </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Random</span><span class="s2">();</span>
+    <span class="s0">long </span><span class="s1">fourDigit </span><span class="s2">= (</span><span class="s1">ran</span><span class="s2">.</span><span class="s1">nextLong</span><span class="s2">() % </span><span class="s3">9000L</span><span class="s2">) + </span><span class="s3">1000L</span><span class="s2">;</span>
+    <span class="s1">String first </span><span class="s2">= </span><span class="s4">&quot;&quot; </span><span class="s2">+ </span><span class="s1">Math</span><span class="s2">.</span><span class="s1">abs</span><span class="s2">(</span><span class="s1">fourDigit</span><span class="s2">);</span>
+
+    <span class="s1">JLabel formNumber</span><span class="s2">, </span><span class="s1">pageNumber</span><span class="s2">, </span><span class="s1">presonaldetails</span><span class="s2">, </span><span class="s1">name</span><span class="s2">, </span><span class="s1">Fname</span><span class="s2">, </span><span class="s1">Gender</span><span class="s2">, </span><span class="s1">DOB</span><span class="s2">, </span><span class="s1">Email</span><span class="s2">, </span><span class="s1">Maritial</span><span class="s2">, </span><span class="s1">address</span><span class="s2">, </span><span class="s1">city</span><span class="s2">, </span><span class="s1">state</span><span class="s2">, </span><span class="s1">pincode</span><span class="s2">;</span>
+    <span class="s1">JTextField nameField</span><span class="s2">, </span><span class="s1">FnameField</span><span class="s2">, </span><span class="s1">emailField</span><span class="s2">, </span><span class="s1">addressField</span><span class="s2">, </span><span class="s1">cityField</span><span class="s2">, </span><span class="s1">stateField</span><span class="s2">, </span><span class="s1">pincodeField</span><span class="s2">;</span>
+    <span class="s1">ButtonGroup buttongroup</span><span class="s2">;</span>
+
+    <span class="s0">public </span><span class="s1">Signup</span><span class="s2">() {</span>
+        <span class="s0">super</span><span class="s2">(</span><span class="s4">&quot;APPLICATION FORM&quot;</span><span class="s2">);</span>
+
+        <span class="s1">ImageIcon bank1 </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ImageIcon</span><span class="s2">(</span><span class="s1">ClassLoader</span><span class="s2">.</span><span class="s1">getSystemResource</span><span class="s2">(</span><span class="s4">&quot;icon/bank.png&quot;</span><span class="s2">));</span>
+        <span class="s1">Image bank2 </span><span class="s2">= </span><span class="s1">bank1</span><span class="s2">.</span><span class="s1">getImage</span><span class="s2">().</span><span class="s1">getScaledInstance</span><span class="s2">(</span><span class="s3">100</span><span class="s2">, </span><span class="s3">100</span><span class="s2">, </span><span class="s1">Image</span><span class="s2">.</span><span class="s1">SCALE_DEFAULT</span><span class="s2">);</span>
+        <span class="s1">ImageIcon bank3 </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ImageIcon</span><span class="s2">(</span><span class="s1">bank2</span><span class="s2">);</span>
+        <span class="s1">JLabel bank </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s1">bank3</span><span class="s2">);</span>
+        <span class="s1">bank</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s3">25</span><span class="s2">, </span><span class="s3">10</span><span class="s2">, </span><span class="s3">100</span><span class="s2">, </span><span class="s3">100</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">bank</span><span class="s2">);</span>
+
+        <span class="s1">formNumber </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;APPLICATION FORM NUMBER : &quot; </span><span class="s2">+ </span><span class="s1">first</span><span class="s2">);</span>
+        <span class="s1">formNumber</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s3">260</span><span class="s2">, </span><span class="s3">20</span><span class="s2">, </span><span class="s3">600</span><span class="s2">, </span><span class="s3">40</span><span class="s2">);</span>
+        <span class="s1">formNumber</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s3">20</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">formNumber</span><span class="s2">);</span>
+
+        <span class="s1">pageNumber </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;PAGE 1&quot;</span><span class="s2">);</span>
+        <span class="s1">pageNumber</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s3">420</span><span class="s2">, </span><span class="s3">50</span><span class="s2">, </span><span class="s3">80</span><span class="s2">, </span><span class="s3">40</span><span class="s2">);</span>
+        <span class="s1">pageNumber</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s3">20</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">pageNumber</span><span class="s2">);</span>
+
+        <span class="s1">presonaldetails </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;Personal details&quot;</span><span class="s2">);</span>
+        <span class="s1">presonaldetails</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s3">380</span><span class="s2">, </span><span class="s3">80</span><span class="s2">, </span><span class="s3">180</span><span class="s2">, </span><span class="s3">40</span><span class="s2">);</span>
+        <span class="s1">presonaldetails</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s3">20</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">presonaldetails</span><span class="s2">);</span>
+
+        <span class="s1">name </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;Name :&quot;</span><span class="s2">);</span>
+        <span class="s1">name</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s3">70</span><span class="s2">, </span><span class="s3">130</span><span class="s2">, </span><span class="s3">80</span><span class="s2">, </span><span class="s3">30</span><span class="s2">);</span>
+        <span class="s1">name</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s3">18</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">name</span><span class="s2">);</span>
+
+        <span class="s1">nameField </span><span class="s2">= </span><span class="s0">new </span><span class="s1">RoundedTextField</span><span class="s2">(</span><span class="s3">15</span><span class="s2">);</span>
+        <span class="s1">nameField</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s3">270</span><span class="s2">, </span><span class="s3">130</span><span class="s2">, </span><span class="s3">380</span><span class="s2">, </span><span class="s3">25</span><span class="s2">);</span>
+        <span class="s1">nameField</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s3">18</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">nameField</span><span class="s2">);</span>
+
+        <span class="s1">Fname </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;Father's Name :&quot;</span><span class="s2">);</span>
+        <span class="s1">Fname</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s3">70</span><span class="s2">, </span><span class="s3">165</span><span class="s2">, </span><span class="s3">150</span><span class="s2">, </span><span class="s3">25</span><span class="s2">);</span>
+        <span class="s1">Fname</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s3">18</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">Fname</span><span class="s2">);</span>
+
+        <span class="s1">FnameField </span><span class="s2">= </span><span class="s0">new </span><span class="s1">RoundedTextField</span><span class="s2">(</span><span class="s3">15</span><span class="s2">);</span>
+        <span class="s1">FnameField</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s3">270</span><span class="s2">, </span><span class="s3">165</span><span class="s2">, </span><span class="s3">380</span><span class="s2">, </span><span class="s3">25</span><span class="s2">);</span>
+        <span class="s1">FnameField</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s3">18</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">FnameField</span><span class="s2">);</span>
+
+        <span class="s1">Gender </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;Gender :&quot;</span><span class="s2">);</span>
+        <span class="s1">Gender</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s3">70</span><span class="s2">, </span><span class="s3">200</span><span class="s2">, </span><span class="s3">150</span><span class="s2">, </span><span class="s3">25</span><span class="s2">);</span>
+        <span class="s1">Gender</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s3">18</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">Gender</span><span class="s2">);</span>
+
+        <span class="s1">male </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JRadioButton</span><span class="s2">(</span><span class="s4">&quot;Male&quot;</span><span class="s2">);</span>
+        <span class="s1">male</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s3">18</span><span class="s2">));</span>
+        <span class="s1">male</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s3">270</span><span class="s2">, </span><span class="s3">200</span><span class="s2">, </span><span class="s3">100</span><span class="s2">, </span><span class="s3">25</span><span class="s2">);</span>
+        <span class="s1">male</span><span class="s2">.</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s3">222</span><span class="s2">, </span><span class="s3">255</span><span class="s2">, </span><span class="s3">228</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">male</span><span class="s2">);</span>
+
+        <span class="s1">female </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JRadioButton</span><span class="s2">(</span><span class="s4">&quot;Female&quot;</span><span class="s2">);</span>
+        <span class="s1">female</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s3">18</span><span class="s2">));</span>
+        <span class="s1">female</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s3">400</span><span class="s2">, </span><span class="s3">200</span><span class="s2">, </span><span class="s3">100</span><span class="s2">, </span><span class="s3">25</span><span class="s2">);</span>
+        <span class="s1">female</span><span class="s2">.</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s3">222</span><span class="s2">, </span><span class="s3">255</span><span class="s2">, </span><span class="s3">228</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">female</span><span class="s2">);</span>
+
+        <span class="s1">others </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JRadioButton</span><span class="s2">(</span><span class="s4">&quot;Others&quot;</span><span class="s2">);</span>
+        <span class="s1">others</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s3">18</span><span class="s2">));</span>
+        <span class="s1">others</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s3">510</span><span class="s2">, </span><span class="s3">200</span><span class="s2">, </span><span class="s3">100</span><span class="s2">, </span><span class="s3">25</span><span class="s2">);</span>
+        <span class="s1">others</span><span class="s2">.</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s3">222</span><span class="s2">, </span><span class="s3">255</span><span class="s2">, </span><span class="s3">228</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">others</span><span class="s2">);</span>
+
+        <span class="s1">buttongroup </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ButtonGroup</span><span class="s2">();</span><span class="s5">//Grouping buttons so as to select one button only among 2 at a time</span>
+        <span class="s1">buttongroup</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">male</span><span class="s2">);</span>
+        <span class="s1">buttongroup</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">female</span><span class="s2">);</span>
+        <span class="s1">buttongroup</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">others</span><span class="s2">);</span>
+
+        <span class="s1">DOB </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;Date Of Birth :&quot;</span><span class="s2">);</span>
+        <span class="s1">DOB</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s3">70</span><span class="s2">, </span><span class="s3">235</span><span class="s2">, </span><span class="s3">150</span><span class="s2">, </span><span class="s3">25</span><span class="s2">);</span>
+        <span class="s1">DOB</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s3">18</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">DOB</span><span class="s2">);</span>
+
+        <span class="s1">dateChooser </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JDateChooser</span><span class="s2">();</span><span class="s5">// dateChooser.setForeground(new Color(105, 105, 105));</span>
+        <span class="s1">dateChooser</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s3">270</span><span class="s2">, </span><span class="s3">235</span><span class="s2">, </span><span class="s3">380</span><span class="s2">, </span><span class="s3">25</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">dateChooser</span><span class="s2">);</span>
+
+        <span class="s1">Email </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;Email Address :&quot;</span><span class="s2">);</span>
+        <span class="s1">Email</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s3">70</span><span class="s2">, </span><span class="s3">270</span><span class="s2">, </span><span class="s3">150</span><span class="s2">, </span><span class="s3">25</span><span class="s2">);</span>
+        <span class="s1">Email</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s3">18</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">Email</span><span class="s2">);</span>
+
+        <span class="s1">emailField </span><span class="s2">= </span><span class="s0">new </span><span class="s1">RoundedTextField</span><span class="s2">(</span><span class="s3">15</span><span class="s2">);</span>
+        <span class="s1">emailField</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s3">270</span><span class="s2">, </span><span class="s3">270</span><span class="s2">, </span><span class="s3">380</span><span class="s2">, </span><span class="s3">25</span><span class="s2">);</span>
+        <span class="s1">emailField</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s3">18</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">emailField</span><span class="s2">);</span>
+
+        <span class="s1">Maritial </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;Maritial Status :&quot;</span><span class="s2">);</span>
+        <span class="s1">Maritial</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s3">70</span><span class="s2">, </span><span class="s3">300</span><span class="s2">, </span><span class="s3">150</span><span class="s2">, </span><span class="s3">25</span><span class="s2">);</span>
+        <span class="s1">Maritial</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s3">18</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">Maritial</span><span class="s2">);</span>
+
+        <span class="s1">married </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JRadioButton</span><span class="s2">(</span><span class="s4">&quot;Married&quot;</span><span class="s2">);</span>
+        <span class="s1">married</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s3">18</span><span class="s2">));</span>
+        <span class="s1">married</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s3">270</span><span class="s2">, </span><span class="s3">300</span><span class="s2">, </span><span class="s3">100</span><span class="s2">, </span><span class="s3">25</span><span class="s2">);</span>
+        <span class="s1">married</span><span class="s2">.</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s3">222</span><span class="s2">, </span><span class="s3">255</span><span class="s2">, </span><span class="s3">228</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">married</span><span class="s2">);</span>
+
+        <span class="s1">unmarried </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JRadioButton</span><span class="s2">(</span><span class="s4">&quot;unmarried&quot;</span><span class="s2">);</span>
+        <span class="s1">unmarried</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s3">18</span><span class="s2">));</span>
+        <span class="s1">unmarried</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s3">450</span><span class="s2">, </span><span class="s3">300</span><span class="s2">, </span><span class="s3">120</span><span class="s2">, </span><span class="s3">25</span><span class="s2">);</span>
+        <span class="s1">unmarried</span><span class="s2">.</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s3">222</span><span class="s2">, </span><span class="s3">255</span><span class="s2">, </span><span class="s3">228</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">unmarried</span><span class="s2">);</span>
+
+        <span class="s1">ButtonGroup couple </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ButtonGroup</span><span class="s2">();</span>
+        <span class="s1">couple</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">married</span><span class="s2">);</span>
+        <span class="s1">couple</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">unmarried</span><span class="s2">);</span>
+
+        <span class="s1">address </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;Address :&quot;</span><span class="s2">);</span>
+        <span class="s1">address</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s3">70</span><span class="s2">, </span><span class="s3">330</span><span class="s2">, </span><span class="s3">150</span><span class="s2">, </span><span class="s3">25</span><span class="s2">);</span>
+        <span class="s1">address</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s3">18</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">address</span><span class="s2">);</span>
+
+        <span class="s1">addressField </span><span class="s2">= </span><span class="s0">new </span><span class="s1">RoundedTextField</span><span class="s2">(</span><span class="s3">15</span><span class="s2">);</span>
+        <span class="s1">addressField</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s3">270</span><span class="s2">, </span><span class="s3">330</span><span class="s2">, </span><span class="s3">380</span><span class="s2">, </span><span class="s3">25</span><span class="s2">);</span>
+        <span class="s1">addressField</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s3">18</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">addressField</span><span class="s2">);</span>
+
+        <span class="s1">city </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;City :&quot;</span><span class="s2">);</span>
+        <span class="s1">city</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s3">70</span><span class="s2">, </span><span class="s3">360</span><span class="s2">, </span><span class="s3">150</span><span class="s2">, </span><span class="s3">25</span><span class="s2">);</span>
+        <span class="s1">city</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s3">18</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">city</span><span class="s2">);</span>
+
+        <span class="s1">cityField </span><span class="s2">= </span><span class="s0">new </span><span class="s1">RoundedTextField</span><span class="s2">(</span><span class="s3">15</span><span class="s2">);</span>
+        <span class="s1">cityField</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s3">270</span><span class="s2">, </span><span class="s3">360</span><span class="s2">, </span><span class="s3">380</span><span class="s2">, </span><span class="s3">25</span><span class="s2">);</span>
+        <span class="s1">cityField</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s3">18</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">cityField</span><span class="s2">);</span>
+
+        <span class="s1">state </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;State :&quot;</span><span class="s2">);</span>
+        <span class="s1">state</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s3">70</span><span class="s2">, </span><span class="s3">390</span><span class="s2">, </span><span class="s3">150</span><span class="s2">, </span><span class="s3">25</span><span class="s2">);</span>
+        <span class="s1">state</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s3">18</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">state</span><span class="s2">);</span>
+
+        <span class="s1">stateField </span><span class="s2">= </span><span class="s0">new </span><span class="s1">RoundedTextField</span><span class="s2">(</span><span class="s3">15</span><span class="s2">);</span>
+        <span class="s1">stateField</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s3">270</span><span class="s2">, </span><span class="s3">390</span><span class="s2">, </span><span class="s3">380</span><span class="s2">, </span><span class="s3">25</span><span class="s2">);</span>
+        <span class="s1">stateField</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s3">18</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">stateField</span><span class="s2">);</span>
+
+        <span class="s1">pincode </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;Pin Code :&quot;</span><span class="s2">);</span>
+        <span class="s1">pincode</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s3">70</span><span class="s2">, </span><span class="s3">420</span><span class="s2">, </span><span class="s3">150</span><span class="s2">, </span><span class="s3">25</span><span class="s2">);</span>
+        <span class="s1">pincode</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s3">18</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">pincode</span><span class="s2">);</span>
+
+        <span class="s1">pincodeField </span><span class="s2">= </span><span class="s0">new </span><span class="s1">RoundedTextField</span><span class="s2">(</span><span class="s3">15</span><span class="s2">);</span>
+        <span class="s1">pincodeField</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s3">270</span><span class="s2">, </span><span class="s3">420</span><span class="s2">, </span><span class="s3">380</span><span class="s2">, </span><span class="s3">25</span><span class="s2">);</span>
+        <span class="s1">pincodeField</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s3">18</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">pincodeField</span><span class="s2">);</span>
+
+        <span class="s1">JButton Next </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JButton</span><span class="s2">(</span><span class="s4">&quot;Next &quot;</span><span class="s2">);</span>
+        <span class="s1">Next</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s3">650</span><span class="s2">, </span><span class="s3">650</span><span class="s2">, </span><span class="s3">150</span><span class="s2">, </span><span class="s3">35</span><span class="s2">);</span>
+        <span class="s1">Next</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s3">18</span><span class="s2">));</span>
+        <span class="s1">Next</span><span class="s2">.</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s1">Color</span><span class="s2">.</span><span class="s1">BLACK</span><span class="s2">);</span>
+        <span class="s1">Next</span><span class="s2">.</span><span class="s1">setForeground</span><span class="s2">(</span><span class="s1">Color</span><span class="s2">.</span><span class="s1">WHITE</span><span class="s2">);</span>
+        <span class="s1">Next</span><span class="s2">.</span><span class="s1">addActionListener</span><span class="s2">(</span><span class="s0">this</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">Next</span><span class="s2">);</span>
+
+        <span class="s1">getContentPane</span><span class="s2">().</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s3">222</span><span class="s2">, </span><span class="s3">255</span><span class="s2">, </span><span class="s3">228</span><span class="s2">));</span>
+        <span class="s1">setLayout</span><span class="s2">(</span><span class="s0">null</span><span class="s2">);</span>
+        <span class="s1">setSize</span><span class="s2">(</span><span class="s3">850</span><span class="s2">, </span><span class="s3">800</span><span class="s2">);</span>
+        <span class="s1">setLocation</span><span class="s2">(</span><span class="s3">360</span><span class="s2">, </span><span class="s3">40</span><span class="s2">);</span>
+        <span class="s1">setVisible</span><span class="s2">(</span><span class="s0">true</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public static void </span><span class="s1">main</span><span class="s2">(</span><span class="s1">String</span><span class="s2">[] </span><span class="s1">args</span><span class="s2">) {</span>
+        <span class="s0">new </span><span class="s1">Signup</span><span class="s2">();</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">public void </span><span class="s1">actionPerformed</span><span class="s2">(</span><span class="s1">ActionEvent e</span><span class="s2">) {</span>
+        <span class="s1">String DOB1 </span><span class="s2">= ((</span><span class="s1">JTextField</span><span class="s2">) </span><span class="s1">dateChooser</span><span class="s2">.</span><span class="s1">getDateEditor</span><span class="s2">().</span><span class="s1">getUiComponent</span><span class="s2">()).</span><span class="s1">getText</span><span class="s2">();</span>
+        <span class="s1">String gender1 </span><span class="s2">= </span><span class="s4">&quot;null&quot;</span><span class="s2">;</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">male</span><span class="s2">.</span><span class="s1">isSelected</span><span class="s2">()) </span><span class="s1">gender1 </span><span class="s2">= </span><span class="s4">&quot;Male&quot;</span><span class="s2">;</span>
+        <span class="s0">else if </span><span class="s2">(</span><span class="s1">female</span><span class="s2">.</span><span class="s1">isSelected</span><span class="s2">()) </span><span class="s1">gender1 </span><span class="s2">= </span><span class="s4">&quot;Female&quot;</span><span class="s2">;</span>
+        <span class="s0">else if </span><span class="s2">(</span><span class="s1">others</span><span class="s2">.</span><span class="s1">isSelected</span><span class="s2">()) </span><span class="s1">gender1 </span><span class="s2">= </span><span class="s4">&quot;Others&quot;</span><span class="s2">;</span>
+
+        <span class="s1">String Maritial1 </span><span class="s2">= </span><span class="s4">&quot;null&quot;</span><span class="s2">;</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">married</span><span class="s2">.</span><span class="s1">isSelected</span><span class="s2">()) </span><span class="s1">Maritial1 </span><span class="s2">= </span><span class="s4">&quot;Married&quot;</span><span class="s2">;</span>
+        <span class="s0">else if </span><span class="s2">(</span><span class="s1">unmarried</span><span class="s2">.</span><span class="s1">isSelected</span><span class="s2">()) </span><span class="s1">Maritial1 </span><span class="s2">= </span><span class="s4">&quot;Un-Married&quot;</span><span class="s2">;</span>
+
+        <span class="s0">try </span><span class="s2">{</span>
+            <span class="s5">// Validating required fields</span>
+            <span class="s0">if </span><span class="s2">(</span><span class="s1">nameField</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">().</span><span class="s1">equals</span><span class="s2">(</span><span class="s4">&quot;&quot;</span><span class="s2">) || </span><span class="s1">FnameField</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">().</span><span class="s1">equals</span><span class="s2">(</span><span class="s4">&quot;&quot;</span><span class="s2">) || </span><span class="s1">emailField</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">().</span><span class="s1">equals</span><span class="s2">(</span><span class="s4">&quot;&quot;</span><span class="s2">) ||</span>
+                    <span class="s1">addressField</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">().</span><span class="s1">equals</span><span class="s2">(</span><span class="s4">&quot;&quot;</span><span class="s2">) || </span><span class="s1">cityField</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">().</span><span class="s1">equals</span><span class="s2">(</span><span class="s4">&quot;&quot;</span><span class="s2">) ||</span>
+                    <span class="s1">pincodeField</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">().</span><span class="s1">equals</span><span class="s2">(</span><span class="s4">&quot;&quot;</span><span class="s2">) || </span><span class="s1">stateField</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">().</span><span class="s1">equals</span><span class="s2">(</span><span class="s4">&quot;&quot;</span><span class="s2">) || </span><span class="s1">DOB1</span><span class="s2">.</span><span class="s1">equals</span><span class="s2">(</span><span class="s4">&quot;&quot;</span><span class="s2">)) {</span>
+                <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s4">&quot;All Fields are Required&quot;</span><span class="s2">);</span>
+                <span class="s0">return</span><span class="s2">;  </span><span class="s5">// Stop further execution if fields are empty</span>
+            <span class="s2">}</span>
+
+            <span class="s5">// Validate email format</span>
+            <span class="s0">if </span><span class="s2">(!</span><span class="s1">emailField</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">().</span><span class="s1">matches</span><span class="s2">(</span><span class="s4">&quot;^[a-zA-Z0-9_+&amp;*-]+(?:</span><span class="s0">\\</span><span class="s4">.[a-zA-Z0-9_+&amp;*-]+)*@(?:[a-zA-Z0-9-]+</span><span class="s0">\\</span><span class="s4">.)+[a-zA-Z]{2,7}$&quot;</span><span class="s2">)) {</span>
+                <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s4">&quot;Invalid email format.&quot;</span><span class="s2">);</span>
+                <span class="s0">return</span><span class="s2">;</span>
+            <span class="s2">}</span>
+
+            <span class="s5">// Validate pincode (only numeric and 6 digits)</span>
+            <span class="s0">if </span><span class="s2">(!</span><span class="s1">pincodeField</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">().</span><span class="s1">matches</span><span class="s2">(</span><span class="s4">&quot;</span><span class="s0">\\</span><span class="s4">d{6}&quot;</span><span class="s2">)) {</span>
+                <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s4">&quot;Pincode must be a 6-digit number.&quot;</span><span class="s2">);</span>
+                <span class="s0">return</span><span class="s2">;</span>
+            <span class="s2">}</span>
+
+            <span class="s5">// Proceed with inserting the data into the database</span>
+            <span class="s1">connect_wit_database connnection </span><span class="s2">= </span><span class="s0">new </span><span class="s1">connect_wit_database</span><span class="s2">();</span>
+            <span class="s1">String q </span><span class="s2">= </span><span class="s4">&quot;insert into signup values ('&quot; </span><span class="s2">+ </span><span class="s1">first </span><span class="s2">+ </span><span class="s4">&quot;', &quot; </span><span class="s2">+</span>
+                    <span class="s4">&quot;'&quot; </span><span class="s2">+ </span><span class="s1">nameField</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">() + </span><span class="s4">&quot;','&quot; </span><span class="s2">+ </span><span class="s1">FnameField</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">() + </span><span class="s4">&quot;',&quot; </span><span class="s2">+</span>
+                    <span class="s4">&quot;'&quot; </span><span class="s2">+ </span><span class="s1">DOB1 </span><span class="s2">+ </span><span class="s4">&quot;','&quot; </span><span class="s2">+ </span><span class="s1">gender1 </span><span class="s2">+ </span><span class="s4">&quot;','&quot; </span><span class="s2">+ </span><span class="s1">emailField</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">() + </span><span class="s4">&quot;',&quot; </span><span class="s2">+</span>
+                    <span class="s4">&quot;'&quot; </span><span class="s2">+ </span><span class="s1">Maritial1 </span><span class="s2">+ </span><span class="s4">&quot;','&quot; </span><span class="s2">+ </span><span class="s1">addressField</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">() + </span><span class="s4">&quot;','&quot; </span><span class="s2">+ </span><span class="s1">cityField</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">() + </span><span class="s4">&quot;',&quot; </span><span class="s2">+</span>
+                    <span class="s4">&quot;'&quot; </span><span class="s2">+ </span><span class="s1">pincodeField</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">() + </span><span class="s4">&quot;','&quot; </span><span class="s2">+ </span><span class="s1">stateField</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">() + </span><span class="s4">&quot;')&quot;</span><span class="s2">;</span>
+            <span class="s1">connnection</span><span class="s2">.</span><span class="s1">statement</span><span class="s2">.</span><span class="s1">executeUpdate</span><span class="s2">(</span><span class="s1">q</span><span class="s2">);</span>
+
+            <span class="s5">// Redirect to the next page</span>
+            <span class="s0">new </span><span class="s1">Signup2</span><span class="s2">(</span><span class="s1">first</span><span class="s2">);</span>
+            <span class="s1">setVisible</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);  </span><span class="s5">// Closing current window</span>
+        <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">Exception E</span><span class="s2">) {</span>
+            <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s4">&quot;Error occurred: &quot; </span><span class="s2">+ </span><span class="s1">E</span><span class="s2">.</span><span class="s1">getMessage</span><span class="s2">());</span>
+            <span class="s1">E</span><span class="s2">.</span><span class="s1">printStackTrace</span><span class="s2">();</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+<span class="s2">}</span>
+
+<span class="s5">//Class for rounded Border in JTextField</span>
+<span class="s0">class </span><span class="s1">RoundedTextField </span><span class="s0">extends </span><span class="s1">JTextField </span><span class="s2">{</span>
+    <span class="s0">private final int </span><span class="s1">radius</span><span class="s2">;</span>
+
+    <span class="s0">public </span><span class="s1">RoundedTextField</span><span class="s2">(</span><span class="s0">int </span><span class="s1">radius</span><span class="s2">) {</span>
+        <span class="s0">super</span><span class="s2">();</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">radius </span><span class="s2">= </span><span class="s1">radius</span><span class="s2">;</span>
+        <span class="s1">setOpaque</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">protected void </span><span class="s1">paintComponent</span><span class="s2">(</span><span class="s1">Graphics g</span><span class="s2">) {</span>
+        <span class="s1">Graphics2D g2 </span><span class="s2">= (</span><span class="s1">Graphics2D</span><span class="s2">) </span><span class="s1">g</span><span class="s2">.</span><span class="s1">create</span><span class="s2">();</span>
+        <span class="s1">g2</span><span class="s2">.</span><span class="s1">setRenderingHint</span><span class="s2">(</span><span class="s1">RenderingHints</span><span class="s2">.</span><span class="s1">KEY_ANTIALIASING</span><span class="s2">, </span><span class="s1">RenderingHints</span><span class="s2">.</span><span class="s1">VALUE_ANTIALIAS_ON</span><span class="s2">);</span>
+        <span class="s1">g2</span><span class="s2">.</span><span class="s1">setColor</span><span class="s2">(</span><span class="s1">getBackground</span><span class="s2">());</span>
+        <span class="s1">g2</span><span class="s2">.</span><span class="s1">fillRoundRect</span><span class="s2">(</span><span class="s3">0</span><span class="s2">, </span><span class="s3">0</span><span class="s2">, </span><span class="s1">getWidth</span><span class="s2">(), </span><span class="s1">getHeight</span><span class="s2">(), </span><span class="s1">radius</span><span class="s2">, </span><span class="s1">radius</span><span class="s2">);</span>
+        <span class="s1">g2</span><span class="s2">.</span><span class="s1">setColor</span><span class="s2">(</span><span class="s1">getForeground</span><span class="s2">());</span>
+        <span class="s0">super</span><span class="s2">.</span><span class="s1">paintComponent</span><span class="s2">(</span><span class="s1">g</span><span class="s2">);</span>
+        <span class="s1">g2</span><span class="s2">.</span><span class="s1">dispose</span><span class="s2">();</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">protected void </span><span class="s1">paintBorder</span><span class="s2">(</span><span class="s1">Graphics g</span><span class="s2">) {</span>
+        <span class="s1">Graphics2D g2 </span><span class="s2">= (</span><span class="s1">Graphics2D</span><span class="s2">) </span><span class="s1">g</span><span class="s2">.</span><span class="s1">create</span><span class="s2">();</span>
+        <span class="s1">g2</span><span class="s2">.</span><span class="s1">setRenderingHint</span><span class="s2">(</span><span class="s1">RenderingHints</span><span class="s2">.</span><span class="s1">KEY_ANTIALIASING</span><span class="s2">, </span><span class="s1">RenderingHints</span><span class="s2">.</span><span class="s1">VALUE_ANTIALIAS_ON</span><span class="s2">);</span>
+        <span class="s1">g2</span><span class="s2">.</span><span class="s1">setColor</span><span class="s2">(</span><span class="s1">getForeground</span><span class="s2">());</span>
+        <span class="s1">g2</span><span class="s2">.</span><span class="s1">drawRoundRect</span><span class="s2">(</span><span class="s3">0</span><span class="s2">, </span><span class="s3">0</span><span class="s2">, </span><span class="s1">getWidth</span><span class="s2">() - </span><span class="s3">1</span><span class="s2">, </span><span class="s1">getHeight</span><span class="s2">() - </span><span class="s3">1</span><span class="s2">, </span><span class="s1">radius</span><span class="s2">, </span><span class="s1">radius</span><span class="s2">);</span>
+        <span class="s1">g2</span><span class="s2">.</span><span class="s1">dispose</span><span class="s2">();</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+
+
+</pre>
+</body>
+</html>

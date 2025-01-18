@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>connect_wit_database.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #7a7e85;}
+.s4 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+connect_wit_database.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">bank</span><span class="s2">.</span><span class="s1">management</span><span class="s2">.</span><span class="s1">system</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">javax</span><span class="s2">.</span><span class="s1">swing</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">sql</span><span class="s2">.</span><span class="s1">Connection</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">sql</span><span class="s2">.</span><span class="s1">DriverManager</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">sql</span><span class="s2">.</span><span class="s1">Statement</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">connect_wit_database </span><span class="s2">{</span>
+    <span class="s1">Connection connections</span><span class="s2">;</span>
+    <span class="s1">Statement statement</span><span class="s2">;</span>
+
+    <span class="s0">public </span><span class="s1">connect_wit_database</span><span class="s2">() {</span>
+        <span class="s0">try </span><span class="s2">{</span>
+            <span class="s3">//Connecting with Mysql database</span>
+            <span class="s1">connections </span><span class="s2">= </span><span class="s1">DriverManager</span><span class="s2">.</span><span class="s1">getConnection</span><span class="s2">(</span><span class="s4">&quot;jdbc:mysql://localhost:3306/BankSystem&quot;</span><span class="s2">, </span><span class="s4">&quot;root&quot;</span><span class="s2">, </span><span class="s4">&quot;Manish@2009&quot;</span><span class="s2">);</span>
+            <span class="s1">statement </span><span class="s2">= </span><span class="s1">connections</span><span class="s2">.</span><span class="s1">createStatement</span><span class="s2">();</span>
+        <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">Exception E</span><span class="s2">) {</span>
+            <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s4">&quot;Something Went Wrong&quot;</span><span class="s2">);</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public static class </span><span class="s1">MiniStatement </span><span class="s2">{</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

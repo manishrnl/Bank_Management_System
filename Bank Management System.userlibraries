@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="jcalendar-tz-1.3.3-4">
+    <archive path="C:/Users/MANISH/Downloads/jcalendar-tz-1.3.3-4.jar" />
+  </library>
+  <library name="jcalendar-tz-1.3.3-5">
+    <archive path="G:/My Drive/Java Project/Bank Management System using Java/Bank Management System/src/Library/jcalendar-tz-1.3.3-4.jar" />
+  </library>
+  <library name="mysql-connector-java-8.0.28">
+    <archive path="G:/My Drive/Java Project/Bank Management System using Java/Bank Management System/src/Library/mysql-connector-java-8.0.28.jar" />
+  </library>
+</eclipse-userlibraries>
+

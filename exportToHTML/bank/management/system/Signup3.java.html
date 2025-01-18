@@ -1,0 +1,276 @@
+<html>
+<head>
+<title>Signup3.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #7a7e85;}
+.s4 { color: #6aab73;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Signup3.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">bank</span><span class="s2">.</span><span class="s1">management</span><span class="s2">.</span><span class="s1">system</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">javax</span><span class="s2">.</span><span class="s1">swing</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">awt</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">awt</span><span class="s2">.</span><span class="s1">event</span><span class="s2">.</span><span class="s1">ActionEvent</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">awt</span><span class="s2">.</span><span class="s1">event</span><span class="s2">.</span><span class="s1">ActionListener</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">Random</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">Signup3 </span><span class="s0">extends </span><span class="s1">JFrame </span><span class="s0">implements </span><span class="s1">ActionListener </span><span class="s2">{</span>
+    <span class="s1">JButton submitButton</span><span class="s2">, </span><span class="s1">cancelButton</span><span class="s2">, </span><span class="s1">toggleButton</span><span class="s2">;</span>
+    <span class="s1">String formNumber</span><span class="s2">;</span>
+    <span class="s1">JLabel accountType</span><span class="s2">, </span><span class="s1">accountdetails</span><span class="s2">, </span><span class="s1">pageNumber</span><span class="s2">, </span><span class="s1">formNumberLabel</span><span class="s2">, </span><span class="s1">cardNumber</span><span class="s2">, </span><span class="s1">cardNumber2</span><span class="s2">,</span>
+            <span class="s1">cardNumber3</span><span class="s2">, </span><span class="s1">cardNumber4</span><span class="s2">, </span><span class="s1">cardNumber5</span><span class="s2">, </span><span class="s1">cardNumber6</span><span class="s2">, </span><span class="s1">services</span><span class="s2">;</span>
+
+    <span class="s1">ButtonGroup acc</span><span class="s2">;</span>
+    <span class="s1">JRadioButton recurring</span><span class="s2">, </span><span class="s1">fixed</span><span class="s2">, </span><span class="s1">saving</span><span class="s2">, </span><span class="s1">current</span><span class="s2">;</span>
+    <span class="s1">JCheckBox serviceATM</span><span class="s2">, </span><span class="s1">serviceInternet</span><span class="s2">, </span><span class="s1">serviceMobile</span><span class="s2">, </span><span class="s1">serviceEmail</span><span class="s2">, </span><span class="s1">serviceCheque</span><span class="s2">, </span><span class="s1">serviceEstatement</span><span class="s2">, </span><span class="s1">terms</span><span class="s2">;</span>
+    <span class="s0">boolean </span><span class="s1">areAllSelected </span><span class="s2">= </span><span class="s0">false</span><span class="s2">; </span><span class="s3">// Tracks whether all checkboxes are selected</span>
+
+    <span class="s1">Signup3</span><span class="s2">(</span><span class="s1">String formNumber</span><span class="s2">) {</span>
+        <span class="s0">super</span><span class="s2">(</span><span class="s4">&quot;Account Details Page 3&quot;</span><span class="s2">); </span><span class="s3">// Title Bar</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">formNumber </span><span class="s2">= </span><span class="s1">formNumber</span><span class="s2">; </span><span class="s3">// Assign the parameter value to the instance variable</span>
+
+        <span class="s1">ImageIcon bank1 </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ImageIcon</span><span class="s2">(</span><span class="s1">ClassLoader</span><span class="s2">.</span><span class="s1">getSystemResource</span><span class="s2">(</span><span class="s4">&quot;icon/bank.png&quot;</span><span class="s2">));</span>
+        <span class="s1">Image bank2 </span><span class="s2">= </span><span class="s1">bank1</span><span class="s2">.</span><span class="s1">getImage</span><span class="s2">().</span><span class="s1">getScaledInstance</span><span class="s2">(</span><span class="s5">100</span><span class="s2">, </span><span class="s5">100</span><span class="s2">, </span><span class="s1">Image</span><span class="s2">.</span><span class="s1">SCALE_DEFAULT</span><span class="s2">);</span>
+        <span class="s1">ImageIcon bank3 </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ImageIcon</span><span class="s2">(</span><span class="s1">bank2</span><span class="s2">);</span>
+        <span class="s1">JLabel bank </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s1">bank3</span><span class="s2">);</span>
+        <span class="s1">bank</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">50</span><span class="s2">, </span><span class="s5">10</span><span class="s2">, </span><span class="s5">100</span><span class="s2">, </span><span class="s5">100</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">bank</span><span class="s2">);</span>
+
+        <span class="s1">formNumberLabel </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;Form Number : &quot; </span><span class="s2">+ </span><span class="s1">formNumber</span><span class="s2">);</span>
+        <span class="s1">formNumberLabel</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">600</span><span class="s2">, </span><span class="s5">20</span><span class="s2">, </span><span class="s5">150</span><span class="s2">, </span><span class="s5">40</span><span class="s2">);</span>
+        <span class="s1">formNumberLabel</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">15</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">formNumberLabel</span><span class="s2">);</span>
+
+        <span class="s1">pageNumber </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;Page 3&quot;</span><span class="s2">);</span>
+        <span class="s1">pageNumber</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">250</span><span class="s2">, </span><span class="s5">40</span><span class="s2">, </span><span class="s5">80</span><span class="s2">, </span><span class="s5">40</span><span class="s2">);</span>
+        <span class="s1">pageNumber</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">20</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">pageNumber</span><span class="s2">);</span>
+
+        <span class="s1">accountdetails </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;Account details&quot;</span><span class="s2">);</span>
+        <span class="s1">accountdetails</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">250</span><span class="s2">, </span><span class="s5">70</span><span class="s2">, </span><span class="s5">180</span><span class="s2">, </span><span class="s5">40</span><span class="s2">);</span>
+        <span class="s1">accountdetails</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">20</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">accountdetails</span><span class="s2">);</span>
+
+        <span class="s1">accountType </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;Account Type :&quot;</span><span class="s2">);</span>
+        <span class="s1">accountType</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">70</span><span class="s2">, </span><span class="s5">140</span><span class="s2">, </span><span class="s5">180</span><span class="s2">, </span><span class="s5">40</span><span class="s2">);</span>
+        <span class="s1">accountType</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">20</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">accountType</span><span class="s2">);</span>
+
+        <span class="s1">saving </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JRadioButton</span><span class="s2">(</span><span class="s4">&quot;Saving Account&quot;</span><span class="s2">);</span>
+        <span class="s1">saving</span><span class="s2">.</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s5">224</span><span class="s2">, </span><span class="s5">255</span><span class="s2">, </span><span class="s5">255</span><span class="s2">));</span>
+        <span class="s1">saving</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">70</span><span class="s2">, </span><span class="s5">190</span><span class="s2">, </span><span class="s5">250</span><span class="s2">, </span><span class="s5">40</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">saving</span><span class="s2">);</span>
+
+        <span class="s1">current </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JRadioButton</span><span class="s2">(</span><span class="s4">&quot;Current Account&quot;</span><span class="s2">);</span>
+        <span class="s1">current</span><span class="s2">.</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s5">224</span><span class="s2">, </span><span class="s5">255</span><span class="s2">, </span><span class="s5">255</span><span class="s2">));</span>
+        <span class="s1">current</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">350</span><span class="s2">, </span><span class="s5">190</span><span class="s2">, </span><span class="s5">250</span><span class="s2">, </span><span class="s5">40</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">current</span><span class="s2">);</span>
+
+        <span class="s1">fixed </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JRadioButton</span><span class="s2">(</span><span class="s4">&quot;Fixed Deposit Account&quot;</span><span class="s2">);</span>
+        <span class="s1">fixed</span><span class="s2">.</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s5">224</span><span class="s2">, </span><span class="s5">255</span><span class="s2">, </span><span class="s5">255</span><span class="s2">));</span>
+        <span class="s1">fixed</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">70</span><span class="s2">, </span><span class="s5">240</span><span class="s2">, </span><span class="s5">250</span><span class="s2">, </span><span class="s5">40</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">fixed</span><span class="s2">);</span>
+
+        <span class="s1">recurring </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JRadioButton</span><span class="s2">(</span><span class="s4">&quot;Recurring Deposit Account&quot;</span><span class="s2">);</span>
+        <span class="s1">recurring</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">350</span><span class="s2">, </span><span class="s5">240</span><span class="s2">, </span><span class="s5">250</span><span class="s2">, </span><span class="s5">40</span><span class="s2">);</span>
+        <span class="s1">recurring</span><span class="s2">.</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s5">224</span><span class="s2">, </span><span class="s5">255</span><span class="s2">, </span><span class="s5">255</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">recurring</span><span class="s2">);</span>
+
+        <span class="s1">acc </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ButtonGroup</span><span class="s2">();</span>
+        <span class="s1">acc</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">saving</span><span class="s2">);</span>
+        <span class="s1">acc</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">fixed</span><span class="s2">);</span>
+        <span class="s1">acc</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">recurring</span><span class="s2">);</span>
+        <span class="s1">acc</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">current</span><span class="s2">);</span>
+
+        <span class="s1">cardNumber </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;Card Number :&quot;</span><span class="s2">);</span>
+        <span class="s1">cardNumber</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">70</span><span class="s2">, </span><span class="s5">320</span><span class="s2">, </span><span class="s5">150</span><span class="s2">, </span><span class="s5">30</span><span class="s2">);</span>
+        <span class="s1">cardNumber</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">PLAIN</span><span class="s2">, </span><span class="s5">20</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">cardNumber</span><span class="s2">);</span>
+
+        <span class="s1">cardNumber2 </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;XXXX-XXXX-XXXX-6895&quot;</span><span class="s2">);</span>
+        <span class="s1">cardNumber2</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">270</span><span class="s2">, </span><span class="s5">320</span><span class="s2">, </span><span class="s5">250</span><span class="s2">, </span><span class="s5">30</span><span class="s2">);</span>
+        <span class="s1">cardNumber2</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">PLAIN</span><span class="s2">, </span><span class="s5">20</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">cardNumber2</span><span class="s2">);</span>
+
+        <span class="s1">cardNumber3 </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;(Your 16 digit Card Number)&quot;</span><span class="s2">);</span>
+        <span class="s1">cardNumber3</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">70</span><span class="s2">, </span><span class="s5">350</span><span class="s2">, </span><span class="s5">150</span><span class="s2">, </span><span class="s5">20</span><span class="s2">);</span>
+        <span class="s1">cardNumber3</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">PLAIN</span><span class="s2">, </span><span class="s5">11</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">cardNumber3</span><span class="s2">);</span>
+
+        <span class="s1">cardNumber4 </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;( It would appear on ATM Card/Cheque Book and Statement )&quot;</span><span class="s2">);</span>
+        <span class="s1">cardNumber4</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">270</span><span class="s2">, </span><span class="s5">350</span><span class="s2">, </span><span class="s5">350</span><span class="s2">, </span><span class="s5">20</span><span class="s2">);</span>
+        <span class="s1">cardNumber4</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">PLAIN</span><span class="s2">, </span><span class="s5">11</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">cardNumber4</span><span class="s2">);</span>
+
+        <span class="s1">cardNumber5 </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;PIN :&quot;</span><span class="s2">);</span>
+        <span class="s1">cardNumber5</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">70</span><span class="s2">, </span><span class="s5">390</span><span class="s2">, </span><span class="s5">150</span><span class="s2">, </span><span class="s5">20</span><span class="s2">);</span>
+        <span class="s1">cardNumber5</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">PLAIN</span><span class="s2">, </span><span class="s5">20</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">cardNumber5</span><span class="s2">);</span>
+
+        <span class="s1">cardNumber6 </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;XXXX&quot;</span><span class="s2">);</span>
+        <span class="s1">cardNumber6</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">270</span><span class="s2">, </span><span class="s5">390</span><span class="s2">, </span><span class="s5">350</span><span class="s2">, </span><span class="s5">20</span><span class="s2">);</span>
+        <span class="s1">cardNumber6</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">PLAIN</span><span class="s2">, </span><span class="s5">20</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">cardNumber6</span><span class="s2">);</span>
+
+        <span class="s1">services </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;Services Required :&quot;</span><span class="s2">);</span>
+        <span class="s1">services</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">70</span><span class="s2">, </span><span class="s5">420</span><span class="s2">, </span><span class="s5">350</span><span class="s2">, </span><span class="s5">30</span><span class="s2">);</span>
+        <span class="s1">services</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">PLAIN</span><span class="s2">, </span><span class="s5">20</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">services</span><span class="s2">);</span>
+
+        <span class="s1">serviceATM </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JCheckBox</span><span class="s2">(</span><span class="s4">&quot;ATM CARD&quot;</span><span class="s2">);</span>
+        <span class="s1">serviceATM</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">70</span><span class="s2">, </span><span class="s5">460</span><span class="s2">, </span><span class="s5">250</span><span class="s2">, </span><span class="s5">30</span><span class="s2">);</span>
+        <span class="s1">serviceATM</span><span class="s2">.</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s5">224</span><span class="s2">, </span><span class="s5">255</span><span class="s2">, </span><span class="s5">255</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">serviceATM</span><span class="s2">);</span>
+
+        <span class="s1">serviceInternet </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JCheckBox</span><span class="s2">(</span><span class="s4">&quot;Internet Banking&quot;</span><span class="s2">);</span>
+        <span class="s1">serviceInternet</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">370</span><span class="s2">, </span><span class="s5">460</span><span class="s2">, </span><span class="s5">250</span><span class="s2">, </span><span class="s5">30</span><span class="s2">);</span>
+        <span class="s1">serviceInternet</span><span class="s2">.</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s5">224</span><span class="s2">, </span><span class="s5">255</span><span class="s2">, </span><span class="s5">255</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">serviceInternet</span><span class="s2">);</span>
+
+        <span class="s1">serviceMobile </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JCheckBox</span><span class="s2">(</span><span class="s4">&quot;Mobile Banking&quot;</span><span class="s2">);</span>
+        <span class="s1">serviceMobile</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">70</span><span class="s2">, </span><span class="s5">500</span><span class="s2">, </span><span class="s5">250</span><span class="s2">, </span><span class="s5">30</span><span class="s2">);</span>
+        <span class="s1">serviceMobile</span><span class="s2">.</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s5">224</span><span class="s2">, </span><span class="s5">255</span><span class="s2">, </span><span class="s5">255</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">serviceMobile</span><span class="s2">);</span>
+
+        <span class="s1">serviceEmail </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JCheckBox</span><span class="s2">(</span><span class="s4">&quot;Email Alerts&quot;</span><span class="s2">);</span>
+        <span class="s1">serviceEmail</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">370</span><span class="s2">, </span><span class="s5">500</span><span class="s2">, </span><span class="s5">250</span><span class="s2">, </span><span class="s5">30</span><span class="s2">);</span>
+        <span class="s1">serviceEmail</span><span class="s2">.</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s5">224</span><span class="s2">, </span><span class="s5">255</span><span class="s2">, </span><span class="s5">255</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">serviceEmail</span><span class="s2">);</span>
+
+        <span class="s1">serviceCheque </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JCheckBox</span><span class="s2">(</span><span class="s4">&quot;Cheque Book&quot;</span><span class="s2">);</span>
+        <span class="s1">serviceCheque</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">70</span><span class="s2">, </span><span class="s5">540</span><span class="s2">, </span><span class="s5">250</span><span class="s2">, </span><span class="s5">30</span><span class="s2">);</span>
+        <span class="s1">serviceCheque</span><span class="s2">.</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s5">224</span><span class="s2">, </span><span class="s5">255</span><span class="s2">, </span><span class="s5">255</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">serviceCheque</span><span class="s2">);</span>
+
+        <span class="s1">serviceEstatement </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JCheckBox</span><span class="s2">(</span><span class="s4">&quot;E-Statement&quot;</span><span class="s2">);</span>
+        <span class="s1">serviceEstatement</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">370</span><span class="s2">, </span><span class="s5">540</span><span class="s2">, </span><span class="s5">250</span><span class="s2">, </span><span class="s5">30</span><span class="s2">);</span>
+        <span class="s1">serviceEstatement</span><span class="s2">.</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s5">224</span><span class="s2">, </span><span class="s5">255</span><span class="s2">, </span><span class="s5">255</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">serviceEstatement</span><span class="s2">);</span>
+
+        <span class="s1">toggleButton </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JButton</span><span class="s2">(</span><span class="s4">&quot;Select All&quot;</span><span class="s2">);</span>
+        <span class="s1">toggleButton</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">150</span><span class="s2">, </span><span class="s5">590</span><span class="s2">, </span><span class="s5">150</span><span class="s2">, </span><span class="s5">35</span><span class="s2">);</span>
+        <span class="s1">toggleButton</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">PLAIN</span><span class="s2">, </span><span class="s5">15</span><span class="s2">));</span>
+        <span class="s1">toggleButton</span><span class="s2">.</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s1">Color</span><span class="s2">.</span><span class="s1">BLACK</span><span class="s2">);</span>
+        <span class="s1">toggleButton</span><span class="s2">.</span><span class="s1">setForeground</span><span class="s2">(</span><span class="s1">Color</span><span class="s2">.</span><span class="s1">WHITE</span><span class="s2">);</span>
+        <span class="s1">toggleButton</span><span class="s2">.</span><span class="s1">addActionListener</span><span class="s2">(</span><span class="s0">this</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">toggleButton</span><span class="s2">);</span>
+
+        <span class="s1">terms </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JCheckBox</span><span class="s2">(</span><span class="s4">&quot;I hereby declare that the above entered details are correct to the best of my knowledge&quot;</span><span class="s2">);</span>
+        <span class="s1">terms</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">70</span><span class="s2">, </span><span class="s5">640</span><span class="s2">, </span><span class="s5">550</span><span class="s2">, </span><span class="s5">30</span><span class="s2">);</span>
+        <span class="s1">terms</span><span class="s2">.</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s5">224</span><span class="s2">, </span><span class="s5">255</span><span class="s2">, </span><span class="s5">255</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">terms</span><span class="s2">);</span>
+
+        <span class="s1">cancelButton </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JButton</span><span class="s2">(</span><span class="s4">&quot;Cancel&quot;</span><span class="s2">);</span>
+        <span class="s1">cancelButton</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">200</span><span class="s2">, </span><span class="s5">700</span><span class="s2">, </span><span class="s5">150</span><span class="s2">, </span><span class="s5">35</span><span class="s2">);</span>
+        <span class="s1">cancelButton</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">18</span><span class="s2">));</span>
+        <span class="s1">cancelButton</span><span class="s2">.</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s1">Color</span><span class="s2">.</span><span class="s1">BLACK</span><span class="s2">);</span>
+        <span class="s1">cancelButton</span><span class="s2">.</span><span class="s1">setForeground</span><span class="s2">(</span><span class="s1">Color</span><span class="s2">.</span><span class="s1">WHITE</span><span class="s2">);</span>
+        <span class="s1">cancelButton</span><span class="s2">.</span><span class="s1">addActionListener</span><span class="s2">(</span><span class="s0">this</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">cancelButton</span><span class="s2">);</span>
+
+        <span class="s1">submitButton </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JButton</span><span class="s2">(</span><span class="s4">&quot;Submit&quot;</span><span class="s2">);</span>
+        <span class="s1">submitButton</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">450</span><span class="s2">, </span><span class="s5">700</span><span class="s2">, </span><span class="s5">150</span><span class="s2">, </span><span class="s5">35</span><span class="s2">);</span>
+        <span class="s1">submitButton</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">18</span><span class="s2">));</span>
+        <span class="s1">submitButton</span><span class="s2">.</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s1">Color</span><span class="s2">.</span><span class="s1">BLACK</span><span class="s2">);</span>
+        <span class="s1">submitButton</span><span class="s2">.</span><span class="s1">setForeground</span><span class="s2">(</span><span class="s1">Color</span><span class="s2">.</span><span class="s1">WHITE</span><span class="s2">);</span>
+        <span class="s1">submitButton</span><span class="s2">.</span><span class="s1">addActionListener</span><span class="s2">(</span><span class="s0">this</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">submitButton</span><span class="s2">);</span>
+
+
+        <span class="s1">getContentPane</span><span class="s2">().</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s5">224</span><span class="s2">, </span><span class="s5">255</span><span class="s2">, </span><span class="s5">255</span><span class="s2">));</span>
+        <span class="s1">setSize</span><span class="s2">(</span><span class="s5">850</span><span class="s2">, </span><span class="s5">800</span><span class="s2">);</span>
+        <span class="s1">setLocation</span><span class="s2">(</span><span class="s5">360</span><span class="s2">, </span><span class="s5">40</span><span class="s2">);</span>
+        <span class="s1">setLayout</span><span class="s2">(</span><span class="s0">null</span><span class="s2">);</span>
+        <span class="s1">setVisible</span><span class="s2">(</span><span class="s0">true</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public static void </span><span class="s1">main</span><span class="s2">(</span><span class="s1">String</span><span class="s2">[] </span><span class="s1">args</span><span class="s2">) {</span>
+        <span class="s0">new </span><span class="s1">Signup3</span><span class="s2">(</span><span class="s4">&quot;&quot;</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">public void </span><span class="s1">actionPerformed</span><span class="s2">(</span><span class="s1">ActionEvent e</span><span class="s2">) {</span>
+        <span class="s1">Random ran </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Random</span><span class="s2">();</span>
+        <span class="s0">long </span><span class="s1">first7 </span><span class="s2">= (</span><span class="s1">ran</span><span class="s2">.</span><span class="s1">nextLong</span><span class="s2">() % </span><span class="s5">100000000L</span><span class="s2">);</span>
+        <span class="s1">String cardno </span><span class="s2">= </span><span class="s4">&quot;14032000&quot; </span><span class="s2">+ </span><span class="s1">String</span><span class="s2">.</span><span class="s1">format</span><span class="s2">(</span><span class="s4">&quot;%08d&quot;</span><span class="s2">, </span><span class="s1">Math</span><span class="s2">.</span><span class="s1">abs</span><span class="s2">(</span><span class="s1">first7</span><span class="s2">));</span><span class="s3">// String.format(&quot;%08d&quot;, Math.abs(first7)) force to generate 8 digit number always hence we get 16 digit number always</span>
+
+        <span class="s0">long </span><span class="s1">first3 </span><span class="s2">= (</span><span class="s1">ran</span><span class="s2">.</span><span class="s1">nextLong</span><span class="s2">() % </span><span class="s5">10000L</span><span class="s2">);  </span><span class="s3">// This ensures the number is always between 0 and 9999</span>
+        <span class="s1">String pin </span><span class="s2">= </span><span class="s1">String</span><span class="s2">.</span><span class="s1">format</span><span class="s2">(</span><span class="s4">&quot;%04d&quot;</span><span class="s2">, </span><span class="s1">Math</span><span class="s2">.</span><span class="s1">abs</span><span class="s2">(</span><span class="s1">first3</span><span class="s2">));  </span><span class="s3">// This formats the pin to always be 4 digits</span>
+
+        <span class="s1">StringBuilder srvcrq </span><span class="s2">= </span><span class="s0">new </span><span class="s1">StringBuilder</span><span class="s2">();</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">serviceATM</span><span class="s2">.</span><span class="s1">isSelected</span><span class="s2">())</span>
+            <span class="s1">srvcrq</span><span class="s2">.</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;  ATM CARD  &quot;</span><span class="s2">);</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">serviceMobile</span><span class="s2">.</span><span class="s1">isSelected</span><span class="s2">())</span>
+            <span class="s1">srvcrq</span><span class="s2">.</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;  Mobile Banking  &quot;</span><span class="s2">);</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">serviceEmail</span><span class="s2">.</span><span class="s1">isSelected</span><span class="s2">())</span>
+            <span class="s1">srvcrq</span><span class="s2">.</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;  Email Alert  &quot;</span><span class="s2">);</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">serviceInternet</span><span class="s2">.</span><span class="s1">isSelected</span><span class="s2">())</span>
+            <span class="s1">srvcrq</span><span class="s2">.</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;  Internet Banking  &quot;</span><span class="s2">);</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">serviceCheque</span><span class="s2">.</span><span class="s1">isSelected</span><span class="s2">())</span>
+            <span class="s1">srvcrq</span><span class="s2">.</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;  Cheque Book  &quot;</span><span class="s2">);</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">serviceEstatement</span><span class="s2">.</span><span class="s1">isSelected</span><span class="s2">())</span>
+            <span class="s1">srvcrq</span><span class="s2">.</span><span class="s1">append</span><span class="s2">(</span><span class="s4">&quot;  E-Statement  &quot;</span><span class="s2">);</span>
+
+        <span class="s0">try </span><span class="s2">{</span>
+            <span class="s0">if </span><span class="s2">(</span><span class="s1">e</span><span class="s2">.</span><span class="s1">getSource</span><span class="s2">() == </span><span class="s1">toggleButton</span><span class="s2">) {</span>
+                <span class="s3">// Toggle the state of the checkbox either select all or select none</span>
+                <span class="s1">areAllSelected </span><span class="s2">= !</span><span class="s1">areAllSelected</span><span class="s2">;</span>
+                <span class="s1">serviceATM</span><span class="s2">.</span><span class="s1">setSelected</span><span class="s2">(</span><span class="s1">areAllSelected</span><span class="s2">);</span>
+                <span class="s1">serviceEstatement</span><span class="s2">.</span><span class="s1">setSelected</span><span class="s2">(</span><span class="s1">areAllSelected</span><span class="s2">);</span>
+                <span class="s1">serviceCheque</span><span class="s2">.</span><span class="s1">setSelected</span><span class="s2">(</span><span class="s1">areAllSelected</span><span class="s2">);</span>
+                <span class="s1">serviceInternet</span><span class="s2">.</span><span class="s1">setSelected</span><span class="s2">(</span><span class="s1">areAllSelected</span><span class="s2">);</span>
+                <span class="s1">serviceMobile</span><span class="s2">.</span><span class="s1">setSelected</span><span class="s2">(</span><span class="s1">areAllSelected</span><span class="s2">);</span>
+                <span class="s1">serviceEmail</span><span class="s2">.</span><span class="s1">setSelected</span><span class="s2">(</span><span class="s1">areAllSelected</span><span class="s2">);</span>
+                <span class="s1">toggleButton</span><span class="s2">.</span><span class="s1">setText</span><span class="s2">(</span><span class="s1">areAllSelected </span><span class="s2">? </span><span class="s4">&quot;Deselect All&quot; </span><span class="s2">: </span><span class="s4">&quot;Select All&quot;</span><span class="s2">);</span>
+            <span class="s2">}</span>
+            <span class="s0">if </span><span class="s2">(</span><span class="s1">e</span><span class="s2">.</span><span class="s1">getSource</span><span class="s2">() == </span><span class="s1">submitButton</span><span class="s2">) {</span>
+                <span class="s1">String atype </span><span class="s2">= </span><span class="s4">&quot;&quot;</span><span class="s2">;</span>
+                <span class="s0">if </span><span class="s2">(</span><span class="s1">saving</span><span class="s2">.</span><span class="s1">isSelected</span><span class="s2">())</span>
+                    <span class="s1">atype </span><span class="s2">= </span><span class="s4">&quot;Saving Account&quot;</span><span class="s2">;</span>
+                <span class="s0">else if </span><span class="s2">(</span><span class="s1">fixed</span><span class="s2">.</span><span class="s1">isSelected</span><span class="s2">())</span>
+                    <span class="s1">atype </span><span class="s2">= </span><span class="s4">&quot;Fixed Deposit Account&quot;</span><span class="s2">;</span>
+                <span class="s0">else if </span><span class="s2">(</span><span class="s1">recurring</span><span class="s2">.</span><span class="s1">isSelected</span><span class="s2">())</span>
+                    <span class="s1">atype </span><span class="s2">= </span><span class="s4">&quot;Recurring Deposit Account&quot;</span><span class="s2">;</span>
+                <span class="s0">else if </span><span class="s2">(</span><span class="s1">current</span><span class="s2">.</span><span class="s1">isSelected</span><span class="s2">())</span>
+                    <span class="s1">atype </span><span class="s2">= </span><span class="s4">&quot;Current Account&quot;</span><span class="s2">;</span>
+
+                <span class="s0">if </span><span class="s2">(</span><span class="s1">atype</span><span class="s2">.</span><span class="s1">isEmpty</span><span class="s2">()) {</span>
+                    <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s4">&quot;Please select an account type!&quot;</span><span class="s2">);</span>
+                    <span class="s0">return</span><span class="s2">; </span><span class="s3">// Stop further execution if account type is not choosen</span>
+                <span class="s2">}</span>
+
+                <span class="s0">if </span><span class="s2">(!</span><span class="s1">terms</span><span class="s2">.</span><span class="s1">isSelected</span><span class="s2">()) {</span>
+                    <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s4">&quot;Please agree to the terms and conditions!&quot;</span><span class="s2">);</span>
+                    <span class="s0">return</span><span class="s2">; </span><span class="s3">// Stop further execution if Terms is not choosen</span>
+                <span class="s2">}</span>
+
+                <span class="s1">connect_wit_database con3 </span><span class="s2">= </span><span class="s0">new </span><span class="s1">connect_wit_database</span><span class="s2">();</span>
+                <span class="s1">String data3 </span><span class="s2">= </span><span class="s4">&quot;INSERT INTO signup3 VALUES ('&quot; </span><span class="s2">+ </span><span class="s1">formNumber </span><span class="s2">+ </span><span class="s4">&quot;', '&quot; </span><span class="s2">+ </span><span class="s1">atype </span><span class="s2">+ </span><span class="s4">&quot;', '&quot; </span><span class="s2">+ </span><span class="s1">srvcrq </span><span class="s2">+ </span><span class="s4">&quot;', '&quot; </span><span class="s2">+ </span><span class="s1">cardno </span><span class="s2">+ </span><span class="s4">&quot;', '&quot; </span><span class="s2">+ </span><span class="s1">pin </span><span class="s2">+ </span><span class="s4">&quot;')&quot;</span><span class="s2">;</span>
+                <span class="s1">String data4 </span><span class="s2">= </span><span class="s4">&quot;INSERT INTO login VALUES ('&quot; </span><span class="s2">+ </span><span class="s1">formNumber </span><span class="s2">+ </span><span class="s4">&quot;', '&quot; </span><span class="s2">+ </span><span class="s1">cardno </span><span class="s2">+ </span><span class="s4">&quot;', '&quot; </span><span class="s2">+ </span><span class="s1">pin </span><span class="s2">+ </span><span class="s4">&quot;')&quot;</span><span class="s2">;</span>
+                <span class="s1">con3</span><span class="s2">.</span><span class="s1">statement</span><span class="s2">.</span><span class="s1">executeUpdate</span><span class="s2">(</span><span class="s1">data3</span><span class="s2">);</span>
+                <span class="s1">con3</span><span class="s2">.</span><span class="s1">statement</span><span class="s2">.</span><span class="s1">executeUpdate</span><span class="s2">(</span><span class="s1">data4</span><span class="s2">);</span>
+                <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s4">&quot;Card Number: &quot; </span><span class="s2">+ </span><span class="s1">cardno </span><span class="s2">+ </span><span class="s4">&quot;</span><span class="s0">\n</span><span class="s4">PIN: &quot; </span><span class="s2">+ </span><span class="s1">pin</span><span class="s2">);</span>
+                <span class="s0">new </span><span class="s1">Login</span><span class="s2">();</span>
+                <span class="s1">setVisible</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+            <span class="s2">} </span><span class="s0">else if </span><span class="s2">(</span><span class="s1">e</span><span class="s2">.</span><span class="s1">getSource</span><span class="s2">() == </span><span class="s1">cancelButton</span><span class="s2">) {</span>
+                <span class="s1">System</span><span class="s2">.</span><span class="s1">exit</span><span class="s2">(</span><span class="s5">0</span><span class="s2">);</span>
+            <span class="s2">}</span>
+        <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">Exception ex</span><span class="s2">) {</span>
+            <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s4">&quot;Something Went Wrong&quot;</span><span class="s2">);</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

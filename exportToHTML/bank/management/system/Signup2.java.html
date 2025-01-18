@@ -1,0 +1,272 @@
+<html>
+<head>
+<title>Signup2.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #7a7e85;}
+.s4 { color: #6aab73;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Signup2.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">bank</span><span class="s2">.</span><span class="s1">management</span><span class="s2">.</span><span class="s1">system</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">javax</span><span class="s2">.</span><span class="s1">swing</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">awt</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">awt</span><span class="s2">.</span><span class="s1">event</span><span class="s2">.</span><span class="s1">ActionEvent</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">awt</span><span class="s2">.</span><span class="s1">event</span><span class="s2">.</span><span class="s1">ActionListener</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">Signup2 </span><span class="s0">extends </span><span class="s1">JFrame </span><span class="s0">implements </span><span class="s1">ActionListener </span><span class="s2">{</span>
+    <span class="s1">String formNumber</span><span class="s2">;  </span><span class="s3">// Declare formNumber to hold the form number passed from the previous screen</span>
+    <span class="s1">JComboBox religionCombo</span><span class="s2">, </span><span class="s1">categoryCombo</span><span class="s2">, </span><span class="s1">incomeCombo</span><span class="s2">, </span><span class="s1">educationCombo</span><span class="s2">, </span><span class="s1">occupationCombo</span><span class="s2">;</span>
+    <span class="s1">JTextField panField</span><span class="s2">, </span><span class="s1">aadharField</span><span class="s2">, </span><span class="s1">mobileField</span><span class="s2">;</span>
+    <span class="s1">JButton nextButton</span><span class="s2">;</span>
+    <span class="s1">JRadioButton seniorcitizenyes</span><span class="s2">, </span><span class="s1">seniorcitizenno</span><span class="s2">, </span><span class="s1">Accountyes</span><span class="s2">, </span><span class="s1">Accountno</span><span class="s2">;</span>
+
+    <span class="s1">Signup2</span><span class="s2">(</span><span class="s1">String formNumber</span><span class="s2">) {  </span><span class="s3">// Corrected the constructor parameter to pass formNumber</span>
+        <span class="s0">super</span><span class="s2">(</span><span class="s4">&quot;APPLICATION FORM&quot;</span><span class="s2">);</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">formNumber </span><span class="s2">= </span><span class="s1">formNumber</span><span class="s2">;  </span><span class="s3">// Assign the passed form number</span>
+
+        <span class="s3">// Set up frame and components</span>
+        <span class="s1">setLayout</span><span class="s2">(</span><span class="s0">null</span><span class="s2">);</span>
+        <span class="s1">setSize</span><span class="s2">(</span><span class="s5">850</span><span class="s2">, </span><span class="s5">800</span><span class="s2">);</span>
+        <span class="s1">setLocation</span><span class="s2">(</span><span class="s5">360</span><span class="s2">, </span><span class="s5">40</span><span class="s2">);</span>
+
+        <span class="s3">// Bank logo</span>
+        <span class="s1">ImageIcon bank1 </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ImageIcon</span><span class="s2">(</span><span class="s1">ClassLoader</span><span class="s2">.</span><span class="s1">getSystemResource</span><span class="s2">(</span><span class="s4">&quot;icon/bank.png&quot;</span><span class="s2">));</span>
+        <span class="s1">Image bank2 </span><span class="s2">= </span><span class="s1">bank1</span><span class="s2">.</span><span class="s1">getImage</span><span class="s2">().</span><span class="s1">getScaledInstance</span><span class="s2">(</span><span class="s5">100</span><span class="s2">, </span><span class="s5">100</span><span class="s2">, </span><span class="s1">Image</span><span class="s2">.</span><span class="s1">SCALE_DEFAULT</span><span class="s2">);</span>
+        <span class="s1">ImageIcon bank3 </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ImageIcon</span><span class="s2">(</span><span class="s1">bank2</span><span class="s2">);</span>
+        <span class="s1">JLabel bank </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s1">bank3</span><span class="s2">);</span>
+        <span class="s1">bank</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">25</span><span class="s2">, </span><span class="s5">10</span><span class="s2">, </span><span class="s5">100</span><span class="s2">, </span><span class="s5">100</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">bank</span><span class="s2">);</span>
+
+        <span class="s1">JLabel formNumberLabel </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;Form Number : &quot; </span><span class="s2">+ </span><span class="s1">formNumber</span><span class="s2">);</span>
+        <span class="s1">formNumberLabel</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">600</span><span class="s2">, </span><span class="s5">20</span><span class="s2">, </span><span class="s5">150</span><span class="s2">, </span><span class="s5">40</span><span class="s2">);</span>
+        <span class="s1">formNumberLabel</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">15</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">formNumberLabel</span><span class="s2">);</span>
+
+        <span class="s1">JLabel pageNumber </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;PAGE 2&quot;</span><span class="s2">);</span>
+        <span class="s1">pageNumber</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">420</span><span class="s2">, </span><span class="s5">50</span><span class="s2">, </span><span class="s5">80</span><span class="s2">, </span><span class="s5">40</span><span class="s2">);</span>
+        <span class="s1">pageNumber</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">20</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">pageNumber</span><span class="s2">);</span>
+
+        <span class="s1">JLabel presonaldetails </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;Additional details&quot;</span><span class="s2">);</span>
+        <span class="s1">presonaldetails</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">380</span><span class="s2">, </span><span class="s5">80</span><span class="s2">, </span><span class="s5">180</span><span class="s2">, </span><span class="s5">40</span><span class="s2">);</span>
+        <span class="s1">presonaldetails</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">20</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">presonaldetails</span><span class="s2">);</span>
+
+        <span class="s3">// Religion ComboBox</span>
+        <span class="s1">JLabel religion </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;Religion :&quot;</span><span class="s2">);</span>
+        <span class="s1">religion</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">70</span><span class="s2">, </span><span class="s5">150</span><span class="s2">, </span><span class="s5">150</span><span class="s2">, </span><span class="s5">25</span><span class="s2">);</span>
+        <span class="s1">religion</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">18</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">religion</span><span class="s2">);</span>
+
+        <span class="s1">String</span><span class="s2">[] </span><span class="s1">Religion </span><span class="s2">= {</span><span class="s4">&quot;Hindu&quot;</span><span class="s2">, </span><span class="s4">&quot;Muslim&quot;</span><span class="s2">, </span><span class="s4">&quot;Sikh&quot;</span><span class="s2">, </span><span class="s4">&quot;Christian&quot;</span><span class="s2">};</span>
+
+        <span class="s1">religionCombo </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JComboBox</span><span class="s2">(</span><span class="s1">Religion</span><span class="s2">);</span>
+        <span class="s1">religionCombo</span><span class="s2">.</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s5">252</span><span class="s2">, </span><span class="s5">208</span><span class="s2">, </span><span class="s5">76</span><span class="s2">));</span>
+        <span class="s1">religionCombo</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">15</span><span class="s2">));</span>
+        <span class="s1">religionCombo</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">270</span><span class="s2">, </span><span class="s5">150</span><span class="s2">, </span><span class="s5">300</span><span class="s2">, </span><span class="s5">30</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">religionCombo</span><span class="s2">);</span>
+
+        <span class="s3">// Category ComboBox</span>
+        <span class="s1">JLabel category </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;Category :&quot;</span><span class="s2">);</span>
+        <span class="s1">category</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">70</span><span class="s2">, </span><span class="s5">190</span><span class="s2">, </span><span class="s5">150</span><span class="s2">, </span><span class="s5">25</span><span class="s2">);</span>
+        <span class="s1">category</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">18</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">category</span><span class="s2">);</span>
+
+        <span class="s1">String</span><span class="s2">[] </span><span class="s1">Category </span><span class="s2">= {</span><span class="s4">&quot;General&quot;</span><span class="s2">, </span><span class="s4">&quot;EBC&quot;</span><span class="s2">, </span><span class="s4">&quot;SC/ST&quot;</span><span class="s2">, </span><span class="s4">&quot;OBC&quot;</span><span class="s2">};</span>
+        <span class="s1">categoryCombo </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JComboBox</span><span class="s2">(</span><span class="s1">Category</span><span class="s2">);</span>
+        <span class="s1">categoryCombo</span><span class="s2">.</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s5">252</span><span class="s2">, </span><span class="s5">208</span><span class="s2">, </span><span class="s5">76</span><span class="s2">));</span>
+        <span class="s1">categoryCombo</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">15</span><span class="s2">));</span>
+        <span class="s1">categoryCombo</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">270</span><span class="s2">, </span><span class="s5">190</span><span class="s2">, </span><span class="s5">300</span><span class="s2">, </span><span class="s5">30</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">categoryCombo</span><span class="s2">);</span>
+
+        <span class="s3">// Income ComboBox</span>
+        <span class="s1">JLabel income </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;Income :&quot;</span><span class="s2">);</span>
+        <span class="s1">income</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">70</span><span class="s2">, </span><span class="s5">230</span><span class="s2">, </span><span class="s5">150</span><span class="s2">, </span><span class="s5">25</span><span class="s2">);</span>
+        <span class="s1">income</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">18</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">income</span><span class="s2">);</span>
+
+        <span class="s1">String</span><span class="s2">[] </span><span class="s1">Income </span><span class="s2">= {</span><span class="s4">&quot;0.00&quot;</span><span class="s2">, </span><span class="s4">&quot;&lt; 1,00,000&quot;</span><span class="s2">, </span><span class="s4">&quot;1,00,001-3,00,000&quot;</span><span class="s2">, </span><span class="s4">&quot;3,00,001-5,00,000&quot;</span><span class="s2">, </span><span class="s4">&quot;5,00,001-10,00,000&quot;</span><span class="s2">, </span><span class="s4">&quot;&gt; 10,00,000&quot;</span><span class="s2">};</span>
+        <span class="s1">incomeCombo </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JComboBox</span><span class="s2">(</span><span class="s1">Income</span><span class="s2">);</span>
+        <span class="s1">incomeCombo</span><span class="s2">.</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s5">252</span><span class="s2">, </span><span class="s5">208</span><span class="s2">, </span><span class="s5">76</span><span class="s2">));</span>
+        <span class="s1">incomeCombo</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">15</span><span class="s2">));</span>
+        <span class="s1">incomeCombo</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">270</span><span class="s2">, </span><span class="s5">230</span><span class="s2">, </span><span class="s5">300</span><span class="s2">, </span><span class="s5">30</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">incomeCombo</span><span class="s2">);</span>
+
+        <span class="s3">// Educational Qualification ComboBox</span>
+        <span class="s1">JLabel education </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;Educational Qualification :&quot;</span><span class="s2">);</span>
+        <span class="s1">education</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">70</span><span class="s2">, </span><span class="s5">270</span><span class="s2">, </span><span class="s5">150</span><span class="s2">, </span><span class="s5">25</span><span class="s2">);</span>
+        <span class="s1">education</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">18</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">education</span><span class="s2">);</span>
+
+        <span class="s1">String</span><span class="s2">[] </span><span class="s1">Education </span><span class="s2">= {</span><span class="s4">&quot;No Schooling&quot;</span><span class="s2">, </span><span class="s4">&quot;Up to 10th&quot;</span><span class="s2">, </span><span class="s4">&quot;Up to 12th&quot;</span><span class="s2">, </span><span class="s4">&quot;Graduate in B.tech&quot;</span><span class="s2">, </span><span class="s4">&quot;Graduate in BCA&quot;</span><span class="s2">, </span><span class="s4">&quot;Graduate in BBA&quot;</span><span class="s2">, </span><span class="s4">&quot;Post Graduate&quot;</span><span class="s2">, </span><span class="s4">&quot;Masters Degree&quot;</span><span class="s2">};</span>
+        <span class="s1">educationCombo </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JComboBox</span><span class="s2">(</span><span class="s1">Education</span><span class="s2">);</span>
+        <span class="s1">educationCombo</span><span class="s2">.</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s5">252</span><span class="s2">, </span><span class="s5">208</span><span class="s2">, </span><span class="s5">76</span><span class="s2">));</span>
+        <span class="s1">educationCombo</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">15</span><span class="s2">));</span>
+        <span class="s1">educationCombo</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">270</span><span class="s2">, </span><span class="s5">270</span><span class="s2">, </span><span class="s5">300</span><span class="s2">, </span><span class="s5">30</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">educationCombo</span><span class="s2">);</span>
+
+        <span class="s3">// Occupation ComboBox</span>
+        <span class="s1">JLabel occupation </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;Occupation :&quot;</span><span class="s2">);</span>
+        <span class="s1">occupation</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">70</span><span class="s2">, </span><span class="s5">310</span><span class="s2">, </span><span class="s5">150</span><span class="s2">, </span><span class="s5">25</span><span class="s2">);</span>
+        <span class="s1">occupation</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">18</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">occupation</span><span class="s2">);</span>
+
+        <span class="s1">String</span><span class="s2">[] </span><span class="s1">Occupation </span><span class="s2">= {</span><span class="s4">&quot;Salaried&quot;</span><span class="s2">, </span><span class="s4">&quot;Self Employed&quot;</span><span class="s2">, </span><span class="s4">&quot;Student&quot;</span><span class="s2">, </span><span class="s4">&quot;Retired as a Ex-Military Men&quot;</span><span class="s2">};</span>
+        <span class="s1">occupationCombo </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JComboBox</span><span class="s2">(</span><span class="s1">Occupation</span><span class="s2">);</span>
+        <span class="s1">occupationCombo</span><span class="s2">.</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s5">252</span><span class="s2">, </span><span class="s5">208</span><span class="s2">, </span><span class="s5">76</span><span class="s2">));</span>
+        <span class="s1">occupationCombo</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">15</span><span class="s2">));</span>
+        <span class="s1">occupationCombo</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">270</span><span class="s2">, </span><span class="s5">310</span><span class="s2">, </span><span class="s5">300</span><span class="s2">, </span><span class="s5">30</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">occupationCombo</span><span class="s2">);</span>
+
+        <span class="s3">// Mobile Number Field</span>
+        <span class="s1">JLabel mobile </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;Mobile number :&quot;</span><span class="s2">);</span>
+        <span class="s1">mobile</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">70</span><span class="s2">, </span><span class="s5">350</span><span class="s2">, </span><span class="s5">150</span><span class="s2">, </span><span class="s5">30</span><span class="s2">);</span>
+        <span class="s1">mobile</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">18</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">mobile</span><span class="s2">);</span>
+
+        <span class="s1">mobileField </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JTextField</span><span class="s2">(</span><span class="s5">15</span><span class="s2">);</span>
+        <span class="s1">mobileField</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">270</span><span class="s2">, </span><span class="s5">350</span><span class="s2">, </span><span class="s5">380</span><span class="s2">, </span><span class="s5">30</span><span class="s2">);</span>
+        <span class="s1">mobileField</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">18</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">mobileField</span><span class="s2">);</span>
+
+        <span class="s3">// Aadhar Number Field</span>
+        <span class="s1">JLabel aadhar </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;Aadhar No. :&quot;</span><span class="s2">);</span>
+        <span class="s1">aadhar</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">70</span><span class="s2">, </span><span class="s5">390</span><span class="s2">, </span><span class="s5">150</span><span class="s2">, </span><span class="s5">30</span><span class="s2">);</span>
+        <span class="s1">aadhar</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">18</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">aadhar</span><span class="s2">);</span>
+
+        <span class="s1">aadharField </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JTextField</span><span class="s2">(</span><span class="s5">15</span><span class="s2">);</span>
+        <span class="s1">aadharField</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">270</span><span class="s2">, </span><span class="s5">390</span><span class="s2">, </span><span class="s5">380</span><span class="s2">, </span><span class="s5">30</span><span class="s2">);</span>
+        <span class="s1">aadharField</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">18</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">aadharField</span><span class="s2">);</span>
+
+        <span class="s3">// PAN Number Field</span>
+        <span class="s1">JLabel pan </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;PAN NO. :&quot;</span><span class="s2">);</span>
+        <span class="s1">pan</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">70</span><span class="s2">, </span><span class="s5">430</span><span class="s2">, </span><span class="s5">150</span><span class="s2">, </span><span class="s5">30</span><span class="s2">);</span>
+        <span class="s1">pan</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">18</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">pan</span><span class="s2">);</span>
+
+        <span class="s1">panField </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JTextField</span><span class="s2">(</span><span class="s5">15</span><span class="s2">);</span>
+        <span class="s1">panField</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">270</span><span class="s2">, </span><span class="s5">430</span><span class="s2">, </span><span class="s5">380</span><span class="s2">, </span><span class="s5">30</span><span class="s2">);</span>
+        <span class="s1">panField</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">18</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">panField</span><span class="s2">);</span>
+
+        <span class="s3">// Comment Field</span>
+        <span class="s1">JLabel comment </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;Senior Citizen :&quot;</span><span class="s2">);</span>
+        <span class="s1">comment</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">70</span><span class="s2">, </span><span class="s5">480</span><span class="s2">, </span><span class="s5">150</span><span class="s2">, </span><span class="s5">30</span><span class="s2">);</span>
+        <span class="s1">comment</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">18</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">comment</span><span class="s2">);</span>
+
+        <span class="s1">seniorcitizenyes </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JRadioButton</span><span class="s2">(</span><span class="s4">&quot;Yes&quot;</span><span class="s2">);</span>
+        <span class="s1">seniorcitizenyes</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">270</span><span class="s2">, </span><span class="s5">480</span><span class="s2">, </span><span class="s5">80</span><span class="s2">, </span><span class="s5">30</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">seniorcitizenyes</span><span class="s2">);</span>
+
+        <span class="s1">seniorcitizenno </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JRadioButton</span><span class="s2">(</span><span class="s4">&quot;No&quot;</span><span class="s2">);</span>
+        <span class="s1">seniorcitizenno</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">400</span><span class="s2">, </span><span class="s5">480</span><span class="s2">, </span><span class="s5">80</span><span class="s2">, </span><span class="s5">30</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">seniorcitizenno</span><span class="s2">);</span>
+        <span class="s1">ButtonGroup SeniorCitizen </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ButtonGroup</span><span class="s2">();</span>
+        <span class="s1">SeniorCitizen</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">seniorcitizenyes</span><span class="s2">);</span>
+        <span class="s1">SeniorCitizen</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">seniorcitizenno</span><span class="s2">);</span>
+
+        <span class="s1">JLabel account </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s4">&quot;Existing Account:&quot;</span><span class="s2">);</span>
+        <span class="s1">account</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">70</span><span class="s2">, </span><span class="s5">520</span><span class="s2">, </span><span class="s5">150</span><span class="s2">, </span><span class="s5">30</span><span class="s2">);</span>
+        <span class="s1">account</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">18</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">account</span><span class="s2">);</span>
+
+        <span class="s1">Accountyes </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JRadioButton</span><span class="s2">(</span><span class="s4">&quot;Yes&quot;</span><span class="s2">);</span>
+        <span class="s1">Accountyes</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">270</span><span class="s2">, </span><span class="s5">520</span><span class="s2">, </span><span class="s5">80</span><span class="s2">, </span><span class="s5">30</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">Accountyes</span><span class="s2">);</span>
+
+        <span class="s1">Accountno </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JRadioButton</span><span class="s2">(</span><span class="s4">&quot;No&quot;</span><span class="s2">);</span>
+        <span class="s1">Accountno</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">400</span><span class="s2">, </span><span class="s5">520</span><span class="s2">, </span><span class="s5">80</span><span class="s2">, </span><span class="s5">30</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">Accountno</span><span class="s2">);</span>
+
+        <span class="s1">ButtonGroup Account </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ButtonGroup</span><span class="s2">();</span>
+        <span class="s1">Account</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">Accountyes</span><span class="s2">);</span>
+        <span class="s1">Account</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s1">Accountno</span><span class="s2">);</span>
+
+        <span class="s3">// Next Button</span>
+        <span class="s1">nextButton </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JButton</span><span class="s2">(</span><span class="s4">&quot;Next&quot;</span><span class="s2">);</span>
+        <span class="s1">nextButton</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">650</span><span class="s2">, </span><span class="s5">650</span><span class="s2">, </span><span class="s5">150</span><span class="s2">, </span><span class="s5">35</span><span class="s2">);</span>
+        <span class="s1">nextButton</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">18</span><span class="s2">));</span>
+        <span class="s1">nextButton</span><span class="s2">.</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s1">Color</span><span class="s2">.</span><span class="s1">BLACK</span><span class="s2">);</span>
+        <span class="s1">nextButton</span><span class="s2">.</span><span class="s1">setForeground</span><span class="s2">(</span><span class="s1">Color</span><span class="s2">.</span><span class="s1">WHITE</span><span class="s2">);</span>
+        <span class="s1">nextButton</span><span class="s2">.</span><span class="s1">addActionListener</span><span class="s2">(</span><span class="s0">this</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">nextButton</span><span class="s2">);</span>
+
+        <span class="s3">// Set window background color</span>
+        <span class="s1">getContentPane</span><span class="s2">().</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Color</span><span class="s2">(</span><span class="s5">252</span><span class="s2">, </span><span class="s5">208</span><span class="s2">, </span><span class="s5">76</span><span class="s2">));</span>
+        <span class="s1">setVisible</span><span class="s2">(</span><span class="s0">true</span><span class="s2">);</span>
+
+        <span class="s3">// ActionListener for the Next Button</span>
+
+
+    <span class="s2">}</span>
+
+    <span class="s0">public static void </span><span class="s1">main</span><span class="s2">(</span><span class="s1">String</span><span class="s2">[] </span><span class="s1">args</span><span class="s2">) {</span>
+        <span class="s0">new </span><span class="s1">Signup2</span><span class="s2">(</span><span class="s4">&quot;&quot;</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">public void </span><span class="s1">actionPerformed</span><span class="s2">(</span><span class="s1">ActionEvent e</span><span class="s2">) {</span>
+        <span class="s1">String rel </span><span class="s2">= (</span><span class="s1">String</span><span class="s2">) </span><span class="s1">religionCombo</span><span class="s2">.</span><span class="s1">getSelectedItem</span><span class="s2">();</span>
+        <span class="s1">String cat </span><span class="s2">= (</span><span class="s1">String</span><span class="s2">) </span><span class="s1">categoryCombo</span><span class="s2">.</span><span class="s1">getSelectedItem</span><span class="s2">();</span>
+        <span class="s1">String edu </span><span class="s2">= (</span><span class="s1">String</span><span class="s2">) </span><span class="s1">educationCombo</span><span class="s2">.</span><span class="s1">getSelectedItem</span><span class="s2">();</span>
+        <span class="s1">String occ </span><span class="s2">= (</span><span class="s1">String</span><span class="s2">) </span><span class="s1">occupationCombo</span><span class="s2">.</span><span class="s1">getSelectedItem</span><span class="s2">();</span>
+        <span class="s1">String inc </span><span class="s2">= (</span><span class="s1">String</span><span class="s2">) </span><span class="s1">incomeCombo</span><span class="s2">.</span><span class="s1">getSelectedItem</span><span class="s2">();</span>
+        <span class="s1">String pan </span><span class="s2">= </span><span class="s1">panField</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">();</span>
+        <span class="s1">String adhar </span><span class="s2">= </span><span class="s1">aadharField</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">();</span>
+        <span class="s1">String mobile </span><span class="s2">= </span><span class="s1">mobileField</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">();</span>
+        <span class="s1">String sc </span><span class="s2">= </span><span class="s4">&quot;&quot;</span><span class="s2">;</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">seniorcitizenyes</span><span class="s2">.</span><span class="s1">isSelected</span><span class="s2">())</span>
+            <span class="s1">sc </span><span class="s2">= </span><span class="s4">&quot;Yes&quot;</span><span class="s2">;</span>
+        <span class="s0">else if </span><span class="s2">(</span><span class="s1">seniorcitizenno</span><span class="s2">.</span><span class="s1">isSelected</span><span class="s2">())</span>
+            <span class="s1">sc </span><span class="s2">= </span><span class="s4">&quot;No&quot;</span><span class="s2">;</span>
+        <span class="s1">String account </span><span class="s2">= </span><span class="s4">&quot;&quot;</span><span class="s2">;</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">Accountyes</span><span class="s2">.</span><span class="s1">isSelected</span><span class="s2">())</span>
+            <span class="s1">account </span><span class="s2">= </span><span class="s4">&quot;Yes&quot;</span><span class="s2">;</span>
+        <span class="s0">else if </span><span class="s2">(</span><span class="s1">Accountno</span><span class="s2">.</span><span class="s1">isSelected</span><span class="s2">())</span>
+            <span class="s1">account </span><span class="s2">= </span><span class="s4">&quot;No&quot;</span><span class="s2">;</span>
+        <span class="s0">try </span><span class="s2">{</span>
+            <span class="s0">if </span><span class="s2">(</span><span class="s1">panField</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">().</span><span class="s1">equals</span><span class="s2">(</span><span class="s4">&quot;&quot;</span><span class="s2">) || </span><span class="s1">mobileField</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">().</span><span class="s1">equals</span><span class="s2">(</span><span class="s4">&quot;&quot;</span><span class="s2">) || </span><span class="s1">aadharField</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">().</span><span class="s1">equals</span><span class="s2">(</span><span class="s4">&quot;&quot;</span><span class="s2">))</span>
+                <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s4">&quot;Fill all the fields&quot;</span><span class="s2">);</span>
+
+                <span class="s3">// Validate Mobile Number (10 digits)</span>
+            <span class="s0">else if </span><span class="s2">(!</span><span class="s1">mobile</span><span class="s2">.</span><span class="s1">matches</span><span class="s2">(</span><span class="s4">&quot;</span><span class="s0">\\</span><span class="s4">d{10}&quot;</span><span class="s2">)) {</span>
+                <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s4">&quot;Mobile Number Must be 10 Digit Long.&quot;</span><span class="s2">);</span>
+            <span class="s2">}</span>
+            <span class="s3">// Validate Aadhar Number (12 digits)</span>
+            <span class="s0">else if </span><span class="s2">(!</span><span class="s1">adhar</span><span class="s2">.</span><span class="s1">matches</span><span class="s2">(</span><span class="s4">&quot;</span><span class="s0">\\</span><span class="s4">d{12}&quot;</span><span class="s2">)) {</span>
+                <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s4">&quot;Aadhar number must be 12 digit Long&quot;</span><span class="s2">);</span>
+            <span class="s2">}</span>
+
+            <span class="s3">// Validate PAN Number (5 alphabets followed by 4 digits and last 1 letter is alphabet)</span>
+            <span class="s0">else if </span><span class="s2">(!</span><span class="s1">pan</span><span class="s2">.</span><span class="s1">matches</span><span class="s2">(</span><span class="s4">&quot;[A-Za-z]{5}</span><span class="s0">\\</span><span class="s4">d{4}[A-Za-z]{1}&quot;</span><span class="s2">)) {</span>
+                <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s4">&quot;PAN number must be in 5 alphabets + 4 digits + 1 Alphabet format.&quot;</span><span class="s2">);</span>
+            <span class="s2">} </span><span class="s0">else </span><span class="s2">{</span>
+                <span class="s1">connect_wit_database con2 </span><span class="s2">= </span><span class="s0">new </span><span class="s1">connect_wit_database</span><span class="s2">();</span>
+                <span class="s1">String data2 </span><span class="s2">= </span><span class="s4">&quot;insert into signup2 values ('&quot; </span><span class="s2">+ </span><span class="s1">formNumber </span><span class="s2">+ </span><span class="s4">&quot;','&quot; </span><span class="s2">+ </span><span class="s1">rel </span><span class="s2">+ </span><span class="s4">&quot;','&quot; </span><span class="s2">+ </span><span class="s1">cat </span><span class="s2">+ </span><span class="s4">&quot;','&quot; </span><span class="s2">+ </span><span class="s1">inc </span><span class="s2">+ </span><span class="s4">&quot;','&quot; </span><span class="s2">+ </span><span class="s1">edu </span><span class="s2">+ </span><span class="s4">&quot;','&quot; </span><span class="s2">+ </span><span class="s1">occ </span><span class="s2">+ </span><span class="s4">&quot;','&quot; </span><span class="s2">+ </span><span class="s1">pan </span><span class="s2">+ </span><span class="s4">&quot;','&quot; </span><span class="s2">+ </span><span class="s1">adhar </span><span class="s2">+ </span><span class="s4">&quot;','&quot; </span><span class="s2">+ </span><span class="s1">mobile </span><span class="s2">+ </span><span class="s4">&quot;','&quot; </span><span class="s2">+ </span><span class="s1">sc </span><span class="s2">+ </span><span class="s4">&quot;','&quot; </span><span class="s2">+ </span><span class="s1">account </span><span class="s2">+ </span><span class="s4">&quot;')&quot;</span><span class="s2">;</span>
+                <span class="s1">con2</span><span class="s2">.</span><span class="s1">statement</span><span class="s2">.</span><span class="s1">executeUpdate</span><span class="s2">(</span><span class="s1">data2</span><span class="s2">);</span>
+                <span class="s0">new </span><span class="s1">Signup3</span><span class="s2">(</span><span class="s1">formNumber</span><span class="s2">);</span>
+                <span class="s1">setVisible</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+            <span class="s2">}</span>
+
+        <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">Exception E</span><span class="s2">) {</span>
+            <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s4">&quot;Error occurred: &quot; </span><span class="s2">+ </span><span class="s1">E</span><span class="s2">.</span><span class="s1">getMessage</span><span class="s2">());</span>
+            <span class="s1">E</span><span class="s2">.</span><span class="s1">printStackTrace</span><span class="s2">();</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span></pre>
+</body>
+</html>

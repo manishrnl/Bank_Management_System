@@ -1,0 +1,17 @@
+CREATE DATABASE IF NOT EXISTS BankSystem;
+USE BankSystem;
+CREATE TABLE signup (Form_Number varchar(10), Name varchar(100), Fathers_Name varchar(100), DOB varchar(300),Gender varchar(10), Email varchar(50), Maritial_status varchar(10), Address varchar(200), City varchar(20), Pincode varchar(10), State varchar(20));
+CREATE TABLE signup2 (Form_Number varchar(10), Religion varchar(30), Category varchar(20), Income varchar(30), Education varchar(30), Occupation varchar(20),  PAN varchar(10), Aadhar varchar(15), Mobile varchar(15) ,Senior_Citizen varchar(5),  Existing_Account varchar(5));
+CREATE TABLE signup3 (Form_Number varchar(10), Account_Type varchar(50), Service_Request varchar(400),Card varchar(30), PIN varchar(30));
+CREATE TABLE login (Form_Number varchar(10), Card_Number varchar(30), PIN varchar(30));
+CREATE TABLE  balance(ID INT AUTO_INCREMENT PRIMARY KEY, Pin VARCHAR(10),date DATETIME,Type VARCHAR(20), Ammount DECIMAL(10, 2));
+select * from signup;
+select * from signup2;
+select * from signup3;
+select * from login; /*  1403200063763677  */
+select * from balance;
+SET SQL_SAFE_UPDATES = 0;
+DELETE  FROM balance WHERE Pin=NULL;
+UPDATE balance SET Pin = '7410' WHERE Pin = '';
+UPDATE login SET Pin = '7410' WHERE Pin = '';
+DELETE FROM balance WHERE Pin IS NULL OR date IS NULL OR Type IS NULL OR Ammount IS NULL;

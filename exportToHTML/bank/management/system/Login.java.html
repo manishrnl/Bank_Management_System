@@ -1,0 +1,178 @@
+<html>
+<head>
+<title>Login.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #7a7e85;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Login.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">bank</span><span class="s2">.</span><span class="s1">management</span><span class="s2">.</span><span class="s1">system</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">javax</span><span class="s2">.</span><span class="s1">swing</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">awt</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">awt</span><span class="s2">.</span><span class="s1">event</span><span class="s2">.</span><span class="s1">ActionEvent</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">awt</span><span class="s2">.</span><span class="s1">event</span><span class="s2">.</span><span class="s1">ActionListener</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">sql</span><span class="s2">.</span><span class="s1">ResultSet</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">Login </span><span class="s0">extends </span><span class="s1">JFrame </span><span class="s0">implements </span><span class="s1">ActionListener </span><span class="s2">{</span>
+    <span class="s1">JLabel title_label</span><span class="s2">, </span><span class="s1">Card_no_Label</span><span class="s2">, </span><span class="s1">pin</span><span class="s2">;</span>
+    <span class="s1">JTextField card_field</span><span class="s2">;</span>
+    <span class="s1">JPasswordField password</span><span class="s2">;</span>
+    <span class="s1">JButton signin</span><span class="s2">, </span><span class="s1">signup</span><span class="s2">, </span><span class="s1">clear</span><span class="s2">;</span>
+
+    <span class="s1">Login</span><span class="s2">() {</span>
+        <span class="s0">super</span><span class="s2">(</span><span class="s3">&quot;Bank Management System &quot;</span><span class="s2">);</span><span class="s4">//Title Bar</span>
+
+        <span class="s1">ImageIcon bank1 </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ImageIcon</span><span class="s2">(</span><span class="s1">ClassLoader</span><span class="s2">.</span><span class="s1">getSystemResource</span><span class="s2">(</span><span class="s3">&quot;icon/bank.png&quot;</span><span class="s2">));</span>
+        <span class="s1">Image bank2 </span><span class="s2">= </span><span class="s1">bank1</span><span class="s2">.</span><span class="s1">getImage</span><span class="s2">().</span><span class="s1">getScaledInstance</span><span class="s2">(</span><span class="s5">100</span><span class="s2">, </span><span class="s5">100</span><span class="s2">, </span><span class="s1">Image</span><span class="s2">.</span><span class="s1">SCALE_DEFAULT</span><span class="s2">);</span>
+        <span class="s1">ImageIcon bank3 </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ImageIcon</span><span class="s2">(</span><span class="s1">bank2</span><span class="s2">);</span>
+        <span class="s1">JLabel bank </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s1">bank3</span><span class="s2">);</span>
+        <span class="s1">bank</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">350</span><span class="s2">, </span><span class="s5">10</span><span class="s2">, </span><span class="s5">100</span><span class="s2">, </span><span class="s5">100</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">bank</span><span class="s2">);</span>
+
+        <span class="s1">ImageIcon card1 </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ImageIcon</span><span class="s2">(</span><span class="s1">ClassLoader</span><span class="s2">.</span><span class="s1">getSystemResource</span><span class="s2">(</span><span class="s3">&quot;icon/card.png&quot;</span><span class="s2">));</span>
+        <span class="s1">Image card2 </span><span class="s2">= </span><span class="s1">card1</span><span class="s2">.</span><span class="s1">getImage</span><span class="s2">().</span><span class="s1">getScaledInstance</span><span class="s2">(</span><span class="s5">100</span><span class="s2">, </span><span class="s5">100</span><span class="s2">, </span><span class="s1">Image</span><span class="s2">.</span><span class="s1">SCALE_DEFAULT</span><span class="s2">);</span>
+        <span class="s1">ImageIcon card3 </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ImageIcon</span><span class="s2">(</span><span class="s1">card2</span><span class="s2">);</span>
+        <span class="s1">JLabel card </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s1">card3</span><span class="s2">);</span>
+        <span class="s1">card</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">630</span><span class="s2">, </span><span class="s5">350</span><span class="s2">, </span><span class="s5">100</span><span class="s2">, </span><span class="s5">100</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">card</span><span class="s2">);</span>
+
+        <span class="s1">title_label </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s3">&quot;WELCOME TO ATM&quot;</span><span class="s2">);</span>
+        <span class="s1">title_label</span><span class="s2">.</span><span class="s1">setForeground</span><span class="s2">(</span><span class="s1">Color</span><span class="s2">.</span><span class="s1">white</span><span class="s2">);</span>
+        <span class="s1">title_label</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s3">&quot;AvantGrade&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">38</span><span class="s2">));</span>
+        <span class="s1">title_label</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">230</span><span class="s2">, </span><span class="s5">125</span><span class="s2">, </span><span class="s5">450</span><span class="s2">, </span><span class="s5">40</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">title_label</span><span class="s2">);</span>
+
+        <span class="s1">Card_no_Label </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s3">&quot;Enter Card No.:&quot;</span><span class="s2">);</span>
+        <span class="s1">Card_no_Label</span><span class="s2">.</span><span class="s1">setForeground</span><span class="s2">(</span><span class="s1">Color</span><span class="s2">.</span><span class="s1">white</span><span class="s2">);</span>
+        <span class="s1">Card_no_Label</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s3">&quot;AvantGrade&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">20</span><span class="s2">));</span>
+        <span class="s1">Card_no_Label</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">150</span><span class="s2">, </span><span class="s5">250</span><span class="s2">, </span><span class="s5">450</span><span class="s2">, </span><span class="s5">40</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">Card_no_Label</span><span class="s2">);</span>
+
+        <span class="s1">card_field </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JTextField</span><span class="s2">(</span><span class="s5">17</span><span class="s2">);</span>
+        <span class="s1">card_field</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">350</span><span class="s2">, </span><span class="s5">250</span><span class="s2">, </span><span class="s5">300</span><span class="s2">, </span><span class="s5">40</span><span class="s2">);</span>
+        <span class="s1">card_field</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s3">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">20</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">card_field</span><span class="s2">);</span>
+
+        <span class="s1">pin </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s3">&quot;Enter PIN:&quot;</span><span class="s2">);</span>
+        <span class="s1">pin</span><span class="s2">.</span><span class="s1">setForeground</span><span class="s2">(</span><span class="s1">Color</span><span class="s2">.</span><span class="s1">white</span><span class="s2">);</span>
+        <span class="s1">pin</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s3">&quot;AvantGrade&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">20</span><span class="s2">));</span>
+        <span class="s1">pin</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">203</span><span class="s2">, </span><span class="s5">300</span><span class="s2">, </span><span class="s5">450</span><span class="s2">, </span><span class="s5">40</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">pin</span><span class="s2">);</span>
+
+        <span class="s1">password </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JPasswordField</span><span class="s2">(</span><span class="s5">5</span><span class="s2">);</span>
+        <span class="s1">password</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">350</span><span class="s2">, </span><span class="s5">300</span><span class="s2">, </span><span class="s5">300</span><span class="s2">, </span><span class="s5">40</span><span class="s2">);</span>
+        <span class="s1">password</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s3">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">20</span><span class="s2">));</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">password</span><span class="s2">);</span>
+
+        <span class="s1">signin </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JButton</span><span class="s2">(</span><span class="s3">&quot;SIGN IN&quot;</span><span class="s2">);</span>
+        <span class="s1">signin</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">120</span><span class="s2">, </span><span class="s5">370</span><span class="s2">, </span><span class="s5">140</span><span class="s2">, </span><span class="s5">40</span><span class="s2">);</span>
+        <span class="s1">signin</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s3">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">15</span><span class="s2">));</span>
+        <span class="s1">signin</span><span class="s2">.</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s1">Color</span><span class="s2">.</span><span class="s1">black</span><span class="s2">);</span>
+        <span class="s1">signin</span><span class="s2">.</span><span class="s1">setForeground</span><span class="s2">(</span><span class="s1">Color</span><span class="s2">.</span><span class="s1">white</span><span class="s2">);</span>
+        <span class="s1">signin</span><span class="s2">.</span><span class="s1">addActionListener</span><span class="s2">(</span><span class="s0">this</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">signin</span><span class="s2">);</span>
+
+        <span class="s1">clear </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JButton</span><span class="s2">(</span><span class="s3">&quot;CLEAR&quot;</span><span class="s2">);</span>
+        <span class="s1">clear</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">320</span><span class="s2">, </span><span class="s5">370</span><span class="s2">, </span><span class="s5">140</span><span class="s2">, </span><span class="s5">40</span><span class="s2">);</span>
+        <span class="s1">clear</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s3">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">15</span><span class="s2">));</span>
+        <span class="s1">clear</span><span class="s2">.</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s1">Color</span><span class="s2">.</span><span class="s1">black</span><span class="s2">);</span>
+        <span class="s1">clear</span><span class="s2">.</span><span class="s1">setForeground</span><span class="s2">(</span><span class="s1">Color</span><span class="s2">.</span><span class="s1">white</span><span class="s2">);</span>
+        <span class="s1">clear</span><span class="s2">.</span><span class="s1">addActionListener</span><span class="s2">(</span><span class="s0">this</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">clear</span><span class="s2">);</span>
+
+        <span class="s1">signup </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JButton</span><span class="s2">(</span><span class="s3">&quot;SIGN UP&quot;</span><span class="s2">);</span>
+        <span class="s1">signup</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">500</span><span class="s2">, </span><span class="s5">370</span><span class="s2">, </span><span class="s5">140</span><span class="s2">, </span><span class="s5">40</span><span class="s2">);</span>
+        <span class="s1">signup</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Font</span><span class="s2">(</span><span class="s3">&quot;Arial&quot;</span><span class="s2">, </span><span class="s1">Font</span><span class="s2">.</span><span class="s1">BOLD</span><span class="s2">, </span><span class="s5">15</span><span class="s2">));</span>
+        <span class="s1">signup</span><span class="s2">.</span><span class="s1">setBackground</span><span class="s2">(</span><span class="s1">Color</span><span class="s2">.</span><span class="s1">black</span><span class="s2">);</span>
+        <span class="s1">signup</span><span class="s2">.</span><span class="s1">setForeground</span><span class="s2">(</span><span class="s1">Color</span><span class="s2">.</span><span class="s1">white</span><span class="s2">);</span>
+        <span class="s1">signup</span><span class="s2">.</span><span class="s1">addActionListener</span><span class="s2">(</span><span class="s0">this</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">signup</span><span class="s2">);</span>
+
+        <span class="s1">ImageIcon backbg1 </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ImageIcon</span><span class="s2">(</span><span class="s1">ClassLoader</span><span class="s2">.</span><span class="s1">getSystemResource</span><span class="s2">(</span><span class="s3">&quot;icon/backbg.png&quot;</span><span class="s2">));</span>
+        <span class="s1">Image backbg2 </span><span class="s2">= </span><span class="s1">backbg1</span><span class="s2">.</span><span class="s1">getImage</span><span class="s2">().</span><span class="s1">getScaledInstance</span><span class="s2">(</span><span class="s5">850</span><span class="s2">, </span><span class="s5">480</span><span class="s2">, </span><span class="s1">Image</span><span class="s2">.</span><span class="s1">SCALE_DEFAULT</span><span class="s2">);</span>
+        <span class="s1">ImageIcon backbg3 </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ImageIcon</span><span class="s2">(</span><span class="s1">backbg2</span><span class="s2">);</span>
+        <span class="s1">JLabel backbg </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JLabel</span><span class="s2">(</span><span class="s1">backbg3</span><span class="s2">);</span>
+        <span class="s1">backbg</span><span class="s2">.</span><span class="s1">setBounds</span><span class="s2">(</span><span class="s5">0</span><span class="s2">, </span><span class="s5">0</span><span class="s2">, </span><span class="s5">850</span><span class="s2">, </span><span class="s5">480</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">backbg</span><span class="s2">);</span>
+
+        <span class="s1">setLayout</span><span class="s2">(</span><span class="s0">null</span><span class="s2">);</span>
+        <span class="s1">setSize</span><span class="s2">(</span><span class="s5">850</span><span class="s2">, </span><span class="s5">480</span><span class="s2">);</span>
+        <span class="s1">setLocation</span><span class="s2">(</span><span class="s5">450</span><span class="s2">, </span><span class="s5">200</span><span class="s2">);</span>
+        <span class="s1">setVisible</span><span class="s2">(</span><span class="s0">true</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public static void </span><span class="s1">main</span><span class="s2">(</span><span class="s1">String</span><span class="s2">[] </span><span class="s1">args</span><span class="s2">) {</span>
+        <span class="s0">new </span><span class="s1">Login</span><span class="s2">();</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">public void </span><span class="s1">actionPerformed</span><span class="s2">(</span><span class="s1">ActionEvent e</span><span class="s2">) {</span>
+        <span class="s0">try </span><span class="s2">{</span>
+            <span class="s0">if </span><span class="s2">(</span><span class="s1">e</span><span class="s2">.</span><span class="s1">getSource</span><span class="s2">() == </span><span class="s1">signin</span><span class="s2">) {</span>
+                <span class="s4">// Retrieve card number and PIN only when &quot;Sign In&quot; is clicked</span>
+                <span class="s1">String cardNumber </span><span class="s2">= </span><span class="s1">card_field</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">().</span><span class="s1">trim</span><span class="s2">();</span>
+                <span class="s1">String pinNumber </span><span class="s2">= </span><span class="s1">String</span><span class="s2">.</span><span class="s1">valueOf</span><span class="s2">(</span><span class="s1">password</span><span class="s2">.</span><span class="s1">getPassword</span><span class="s2">()).</span><span class="s1">trim</span><span class="s2">();</span>
+
+                <span class="s4">// Validate Card Number and PIN</span>
+                <span class="s0">if </span><span class="s2">(</span><span class="s1">cardNumber</span><span class="s2">.</span><span class="s1">length</span><span class="s2">() != </span><span class="s5">16</span><span class="s2">) {</span>
+                    <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s3">&quot;Card number must be 16 digits long.&quot;</span><span class="s2">);</span>
+                    <span class="s0">return</span><span class="s2">;</span>
+                <span class="s2">}</span>
+
+                <span class="s0">if </span><span class="s2">(!</span><span class="s1">cardNumber</span><span class="s2">.</span><span class="s1">matches</span><span class="s2">(</span><span class="s3">&quot;</span><span class="s0">\\</span><span class="s3">d+&quot;</span><span class="s2">)) {</span>
+                    <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s3">&quot;Card number must contain only digits.&quot;</span><span class="s2">);</span>
+                    <span class="s0">return</span><span class="s2">;</span>
+                <span class="s2">}</span>
+
+                <span class="s0">if </span><span class="s2">(</span><span class="s1">pinNumber</span><span class="s2">.</span><span class="s1">length</span><span class="s2">() != </span><span class="s5">4</span><span class="s2">) {</span>
+                    <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s3">&quot;PIN must be 4 digits long.&quot;</span><span class="s2">);</span>
+                    <span class="s0">return</span><span class="s2">;</span>
+                <span class="s2">}</span>
+
+                <span class="s0">if </span><span class="s2">(!</span><span class="s1">pinNumber</span><span class="s2">.</span><span class="s1">matches</span><span class="s2">(</span><span class="s3">&quot;</span><span class="s0">\\</span><span class="s3">d+&quot;</span><span class="s2">)) {</span>
+                    <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s3">&quot;PIN must contain only digits.&quot;</span><span class="s2">);</span>
+                    <span class="s0">return</span><span class="s2">;</span>
+                <span class="s2">}</span>
+
+                <span class="s4">// Database check</span>
+                <span class="s1">connect_wit_database con </span><span class="s2">= </span><span class="s0">new </span><span class="s1">connect_wit_database</span><span class="s2">();</span>
+                <span class="s1">String data5 </span><span class="s2">= </span><span class="s3">&quot;SELECT * FROM login WHERE Card_Number= '&quot; </span><span class="s2">+ </span><span class="s1">cardNumber </span><span class="s2">+ </span><span class="s3">&quot;' and PIN='&quot; </span><span class="s2">+ </span><span class="s1">pinNumber </span><span class="s2">+ </span><span class="s3">&quot;'&quot;</span><span class="s2">;</span>
+                <span class="s1">ResultSet resultSet </span><span class="s2">= </span><span class="s1">con</span><span class="s2">.</span><span class="s1">statement</span><span class="s2">.</span><span class="s1">executeQuery</span><span class="s2">(</span><span class="s1">data5</span><span class="s2">);</span>
+
+                <span class="s0">if </span><span class="s2">(</span><span class="s1">resultSet</span><span class="s2">.</span><span class="s1">next</span><span class="s2">()) {</span>
+
+                    <span class="s1">setVisible</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+                    <span class="s0">new </span><span class="s1">Main_class</span><span class="s2">(</span><span class="s1">pinNumber</span><span class="s2">);</span>
+
+                <span class="s2">} </span><span class="s0">else </span><span class="s2">{</span>
+                    <span class="s1">JOptionPane</span><span class="s2">.</span><span class="s1">showMessageDialog</span><span class="s2">(</span><span class="s0">null</span><span class="s2">, </span><span class="s3">&quot;Wrong Credential! Try again....&quot;</span><span class="s2">);</span>
+                    <span class="s1">card_field</span><span class="s2">.</span><span class="s1">setText</span><span class="s2">(</span><span class="s3">&quot;&quot;</span><span class="s2">);</span>
+                    <span class="s1">password</span><span class="s2">.</span><span class="s1">setText</span><span class="s2">(</span><span class="s3">&quot;&quot;</span><span class="s2">);</span>
+                <span class="s2">}</span>
+            <span class="s2">} </span><span class="s0">else if </span><span class="s2">(</span><span class="s1">e</span><span class="s2">.</span><span class="s1">getSource</span><span class="s2">() == </span><span class="s1">signup</span><span class="s2">) {</span>
+                <span class="s0">new </span><span class="s1">Signup</span><span class="s2">(); </span><span class="s4">// Open the signup page</span>
+            <span class="s2">} </span><span class="s0">else if </span><span class="s2">(</span><span class="s1">e</span><span class="s2">.</span><span class="s1">getSource</span><span class="s2">() == </span><span class="s1">clear</span><span class="s2">) {</span>
+                <span class="s1">card_field</span><span class="s2">.</span><span class="s1">setText</span><span class="s2">(</span><span class="s3">&quot;&quot;</span><span class="s2">);  </span><span class="s4">// Clear card field</span>
+                <span class="s1">password</span><span class="s2">.</span><span class="s1">setText</span><span class="s2">(</span><span class="s3">&quot;&quot;</span><span class="s2">);    </span><span class="s4">// Clear PIN field</span>
+            <span class="s2">}</span>
+        <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">Exception ex</span><span class="s2">) {</span>
+            <span class="s1">ex</span><span class="s2">.</span><span class="s1">printStackTrace</span><span class="s2">();</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+
+</pre>
+</body>
+</html>
