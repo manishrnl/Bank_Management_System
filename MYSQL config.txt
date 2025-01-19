@@ -1,4 +1,4 @@
-MYSQL DATABASE(website pass-ManishSQL@2025)
+MYSQL DATABASE(website pass-M*****SQL@**25)
 
 Account number is: 1122019
 Server / Host: sql12.freesqldatabase.com
