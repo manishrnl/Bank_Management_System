@@ -1,0 +1,5 @@
+# Ignore all files
+
+# Allow .exe and .jar files
+!*.exe
+!*.jar
