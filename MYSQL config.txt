@@ -1,0 +1,8 @@
+MYSQL DATABASE(website pass-ManishSQL@2025)
+
+Account number is: 1122019
+Server / Host: sql12.freesqldatabase.com
+Database name: sql12758451
+Database user: sql12758451
+Database password: YHcSXW42B5
+Port number: 3306
