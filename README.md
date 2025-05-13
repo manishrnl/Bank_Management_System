@@ -14,7 +14,7 @@
 
 | Login Screen | Deposit Screen |
 |--------------|----------------|
-| ![Login](images/Login_Screen.png) | ![Deposit](images/Deposit.png) |
+| ![Login](Images/Login_Screen.png) | ![Deposit](Images/Deposit.png) |
 
 ---
 
