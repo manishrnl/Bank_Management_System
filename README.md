@@ -108,6 +108,6 @@
 │   ├── 📁 images/
 │   └── 📄 config.properties
 ├── 📁 database/
-│   └── bank_management.sql
+│── bank_management.sql
 └── README.md
 ```
