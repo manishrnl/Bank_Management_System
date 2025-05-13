@@ -5,8 +5,8 @@
 ![Security](https://img.shields.io/badge/Feature-Secure%20Login-brightgreen?style=for-the-badge)
 ![ATM Simulation](https://img.shields.io/badge/Simulation-ATM-blue?style=for-the-badge)
 
-> A simple yet effective **Bank Management System** built using **Java + MySQL**.  
-> It simulates core ATM functionalities including **Login**, **Deposit**, **Withdraw**, and **Balance Inquiry** — designed for learning real-world banking concepts with secure backend logic.
+> A simple yet effective **Bank Management System** built using **JavaFX + MySQL**.  
+> It simulates core ATM functionalities including **Login**, **Deposit**, **Withdraw**, ,**Signup** and **Balance Inquiry** — designed for learning real-world banking concepts with secure backend logic.
 
 ---
 
@@ -50,7 +50,7 @@
 | Java           | Core backend logic & flow               |
 | MySQL          | Relational database for accounts        |
 | JDBC           | Java-MySQL connectivity driver          |
-| (Optional) GUI | Java Swing/JavaFX interface (if used)   |
+| GUI            | Java Swing/JavaFX interface             |
 
 ---
 
@@ -69,36 +69,35 @@
 
 
 
-🧭 Instructions
-Set up MySQL and import the provided SQL script (if included).
+## 🧭 Instructions
 
-Configure your DB credentials inside the Java project.
+- Set up MySQL and import the provided SQL script.
 
-Compile and run the main Java class (e.g., Main.java).
+- Configure your DB credentials inside the Java project.
 
-Use test account credentials or register new users (if supported).
+- Compile and run the main Java class (e.g., Main.java).
 
-📌 Requirements
-✅ Java 11+
-✅ MySQL Database
-✅ JDBC Driver
-✅ IntelliJ IDEA or VS Code
+- Use test account credentials or register new users (if supported).
 
-📣 Future Enhancements
-💳 ATM card PIN-based login
-🧾 Transaction history / mini statement
-📧 Email/SMS notifications
-📱 Android integration
+## 📌 Requirements
+- ✅ Java 11+
+- ✅ MySQL Database
+- ✅ JDBC Driver
+- ✅ IntelliJ IDEA or VS Code
 
-👨‍💻 Developed By
-Manish Kumar
-📧 manishrajrnl1@gmail.com
-🔗 GitHub Profile
+## 📣 Future Enhancements
+- 💳 ATM card PIN-based login
+- 🧾 Transaction history / mini statement
+- 📧 Email/SMS notifications
+- 📱 Android integration
 
-📂 Project Structure
-bash
-Copy
-Edit
+## 👨‍💻 Developed By
+- **Manish Kumar**
+- 📧 manishrajrnl1@gmail.com
+- 🔗 GitHub Profile
+
+## 📂 Project Structure
+```bash
 📁 Bank_Management_System/
 ├── 📁 src/
 │   ├── 📁 dao/
@@ -111,4 +110,4 @@ Edit
 ├── 📁 database/
 │   └── bank_management.sql
 └── README.md
-Let me know if you'd like a GUI
+```
